@@ -1,6 +1,6 @@
-export default interface IDimensions {
+export interface IDimensions {
 
-	w: number,
-	h: number
+	readonly w: number,
+	readonly h: number
 
 }

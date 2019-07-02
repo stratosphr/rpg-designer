@@ -1,6 +1,6 @@
-export default interface IVector {
+export interface IVector {
 
-	x: number,
-	y: number
+	readonly x: number,
+	readonly y: number
 
 }
