@@ -1,8 +1,4 @@
 import Scene from '../Scene'
-import {IVector} from '../../utils/IVector'
-
-let pos: IVector = {x: 0, y: 0}
-const speed: number = 0.0001
 
 export default class Game {
 
@@ -28,9 +24,7 @@ export default class Game {
 	}
 
 	private static update(scene: Scene, timeStep: number) {
-		//scene.update(timeStep)
-		pos = {x: pos.x + timeStep * speed, y: pos.y + timeStep * speed}
-		console.log(pos)
+		scene.update(timeStep)
 	}
 
 	private static panic(timeStep: number) {
