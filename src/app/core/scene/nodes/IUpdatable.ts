@@ -1,8 +1,8 @@
-import Scene from '../../Scene'
+import Layer from '../Layer'
 
 export interface IUpdatable {
 
-	update(scene: Scene, timeStep: number): void
+	update(layer: Layer, timeStep: number): void
 
 }
 

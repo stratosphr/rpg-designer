@@ -11,7 +11,7 @@ export default class Game {
 		lastFrameTimeMs = timestamp
 		let numUpdateSteps = 0
 		while (delta >= timeStep) {
-			this.update(scene, timeStep)
+			scene.update(timeStep)
 			delta -= timeStep
 			if (++numUpdateSteps >= 200) {
 				Game.panic(timeStep)
@@ -21,10 +21,6 @@ export default class Game {
 		/*scene.clear()
 		scene.drawEntities()*/
 		window.requestAnimationFrame((timestamp) => Game.loop(scene, timeStep, timestamp, delta, lastFrameTimeMs))
-	}
-
-	private static update(scene: Scene, timeStep: number) {
-		scene.update(timeStep)
 	}
 
 	private static panic(timeStep: number) {

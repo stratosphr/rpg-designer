@@ -24,7 +24,7 @@ export default class Scene extends Component<ISceneProps, ISceneState> {
 	}
 
 	public update(timeStep: number): void {
-		this.props.children.forEach(layer => layer.ref.current.update(this, timeStep))
+		this.props.children.forEach(layer => layer.ref.current.update(timeStep))
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
