@@ -18,8 +18,8 @@ export default class Game {
 				break
 			}
 		}
-		/*scene.clear()
-		scene.drawEntities()*/
+		//scene.clear()
+		scene.drawLayers()
 		window.requestAnimationFrame((timestamp) => Game.loop(scene, timeStep, timestamp, delta, lastFrameTimeMs))
 	}
 

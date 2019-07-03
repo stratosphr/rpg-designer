@@ -30,11 +30,18 @@ export default abstract class Layer extends Component<ILayerProps, ILayerState> 
 	}
 
 	public update(timeStep: number): void {
+		for (let i = 0; i < this.nodes.length; i++) {
+			this.nodes[i].update(this, timeStep)
+		}
 		this.nodes.forEach(node => node.update(this, timeStep))
 	}
 
+	public draw(): void {
+		this.nodes.forEach(node => node.draw(this, this.ctx!))
+	}
+
 	public componentDidMount(): void {
-		this.ctx = this.canvas.current!.getContext('2d')!
+		this.ctx = this.canvas.current!.getContext('2d')
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
