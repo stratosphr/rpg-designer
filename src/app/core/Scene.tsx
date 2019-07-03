@@ -21,8 +21,20 @@ export default class Scene extends Component<ISceneProps, ISceneState> {
 		this.state = {layers: []}
 	}
 
+	public addLayer(layer: any) {
+		this.setState((previousState: ISceneState) => Scene.addLayer(previousState, layer))
+	}
+
+	private static addLayer(previousState: ISceneState, layer: any) {
+		return {...previousState, layers: [...previousState.layers, React.cloneElement(layer, {key: layer.props.id})]}
+	}
+
 	public componentDidMount(): void {
 		this.props.ready(this)
+	}
+
+	public componentDidUpdate(prevProps: Readonly<ISceneProps>, prevState: Readonly<ISceneState>, snapshot?: any): void {
+		console.log(this.state.layers)
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
@@ -31,14 +43,6 @@ export default class Scene extends Component<ISceneProps, ISceneState> {
 				{this.state.layers}
 			</div>
 		)
-	}
-
-	public addLayer(layer: any) {
-		this.setState((previousState: ISceneState) => Scene.addLayer(previousState, layer))
-	}
-
-	private static addLayer(previousState: ISceneState, layer: any) {
-		return {...previousState, layers: [...previousState.layers, React.cloneElement(layer, {key: layer.props.id})]}
 	}
 
 }
