@@ -16,7 +16,7 @@ export default abstract class Layer extends Component<ILayerProps, ILayerState> 
 
 	public readonly nodes: INode[]
 	public readonly canvas: RefObject<HTMLCanvasElement>
-	public ctx: CanvasRenderingContext2D | null
+	private ctx: CanvasRenderingContext2D | null
 
 	protected constructor(props: ILayerProps, context: any) {
 		super(props, context)

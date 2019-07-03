@@ -16,19 +16,16 @@ interface ISceneState {
 
 export default class Scene extends Component<ISceneProps, ISceneState> {
 
-	public componentDidMount(): void {
-		this.props.ready(this)
-	}
-
-	public componentDidUpdate(prevProps: Readonly<ISceneProps>, prevState: Readonly<ISceneState>, snapshot?: any): void {
-	}
-
 	public update(timeStep: number): void {
 		React.Children.forEach(this.props.children, layer => layer.ref.current.update(timeStep))
 	}
 
 	public drawLayers() {
 		React.Children.forEach(this.props.children, layer => layer.ref.current.draw())
+	}
+
+	public componentDidMount(): void {
+		this.props.ready(this)
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
