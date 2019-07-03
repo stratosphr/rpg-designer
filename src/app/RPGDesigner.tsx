@@ -21,7 +21,7 @@ export default class RPGDesigner extends Component {
 		this.layer1.current!.addNode(rect3)
 		this.layer2.current!.addNode(rect1_l2)
 		this.layer3.current!.addNode(rect1_l3)
-		Game.run(scene, 120)
+		Game.run(scene, 200)
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {

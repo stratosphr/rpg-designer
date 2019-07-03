@@ -5,7 +5,7 @@ import {IDimensions} from '../../../../utils/IDimensions'
 import Layer from '../../Layer'
 import {IShape} from './IShape'
 
-const speedFactor: number = 0.1
+const speedFactor: number = 0.05
 
 export default class Rectangle implements IPositioned, IDimensioned, IShape {
 

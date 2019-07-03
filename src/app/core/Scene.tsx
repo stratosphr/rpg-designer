@@ -4,7 +4,7 @@ import {IDimensioned} from '../utils/IDimensioned'
 
 interface ISceneProps extends IPositioned, IDimensioned {
 
-	children: any[]
+	children: any
 
 	ready(scene: Scene): void
 
@@ -24,13 +24,11 @@ export default class Scene extends Component<ISceneProps, ISceneState> {
 	}
 
 	public update(timeStep: number): void {
-		for (let i = 0; i < this.props.children.length; i++) {
-			this.props.children[i].ref.current.update(timeStep)
-		}
+		React.Children.forEach(this.props.children, layer => layer.ref.current.update(timeStep))
 	}
 
 	public drawLayers() {
-		this.props.children.forEach(layer => layer.ref.current.draw())
+		React.Children.forEach(this.props.children, layer => layer.ref.current.draw())
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
