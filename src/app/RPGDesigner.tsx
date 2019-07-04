@@ -11,16 +11,21 @@ export default class RPGDesigner extends Component {
 	private layer3: RefObject<Layer> = React.createRef<Layer>()
 
 	private main(scene: Scene): void {
-		const rect1_l1 = new Rectangle('rect1_l1', {x: 10, y: 10}, {w: 32, h: 32})
-		const rect1_l2 = new Rectangle('rect1_l2', {x: 10, y: 10}, {w: 32, h: 32})
-		const rect1_l3 = new Rectangle('rect1_l3', {x: 10, y: 10}, {w: 32, h: 32})
-		const rect2 = new Rectangle('rect2', {x: 10, y: 70}, {w: 32, h: 32})
-		const rect3 = new Rectangle('rect3', {x: 10, y: 110}, {w: 32, h: 32})
-		this.layer1.current!.addNode(rect1_l1)
+		const speedFactor: number = 1
+		const rect1: Rectangle = new class extends Rectangle {
+
+			public update(layer: Layer, timeStep: number): void {
+				this.position = {x: this.position.x + timeStep * speedFactor * Math.random(), y: this.position.y}
+			}
+		}('rect1_l1', {x: 10, y: 10}, {w: 32, h: 32})
+		const rect2: Rectangle = new class extends Rectangle {
+
+			public update(layer: Layer, timeStep: number): void {
+				this.position = {x: this.position.x + timeStep * speedFactor * Math.random(), y: this.position.y}
+			}
+		}('rect1_l1', {x: 20, y: 100}, {w: 32, h: 32})
+		this.layer1.current!.addNode(rect1)
 		this.layer1.current!.addNode(rect2)
-		this.layer1.current!.addNode(rect3)
-		this.layer2.current!.addNode(rect1_l2)
-		this.layer3.current!.addNode(rect1_l3)
 		Game.run(scene, 200)
 	}
 
