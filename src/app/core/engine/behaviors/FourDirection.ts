@@ -21,7 +21,7 @@ export default class FourDirection extends ABehaviour {
 	}
 
 	private handleKey(ev: KeyboardEvent, isDown: boolean) {
-		switch (ev.key) {
+		switch (ev.key.toLowerCase()) {
 			case this.keys.up:
 				this.keysDown.up = isDown
 				break
@@ -37,7 +37,6 @@ export default class FourDirection extends ABehaviour {
 			default:
 				break
 		}
-		console.log(ev.key)
 	}
 
 	public update(layer: Layer, timeStep: number, node: ANode): void {
