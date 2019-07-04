@@ -3,17 +3,14 @@ import {IPositioned} from '../../../../utils/IPositioned'
 import {IVector} from '../../../../utils/IVector'
 import {IDimensions} from '../../../../utils/IDimensions'
 import Layer from '../../Layer'
-import {IShape} from './IShape'
+import {AShape} from './AShape'
 
-export default abstract class Rectangle implements IPositioned, IDimensioned, IShape {
+export default abstract class Rectangle extends AShape implements IPositioned, IDimensioned {
 
-	public readonly id: string
-	public position: IVector
 	public dimensions: IDimensions
 
 	public constructor(id: string, position: IVector, dimensions: IDimensions) {
-		this.id = id
-		this.position = position
+		super(id, position)
 		this.dimensions = dimensions
 	}
 
@@ -22,6 +19,8 @@ export default abstract class Rectangle implements IPositioned, IDimensioned, IS
 		context.fillRect(this.position.x, this.position.y, this.dimensions.w, this.dimensions.h)
 	}
 
-	public abstract update(layer: Layer, timeStep: number): void
+	public update(layer: Layer, timeStep: number): void {
+
+	}
 
 }

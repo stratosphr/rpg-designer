@@ -2,7 +2,7 @@ import React, {Component, RefObject} from 'react'
 import {IPositioned} from '../../utils/IPositioned'
 import {IDimensioned} from '../../utils/IDimensioned'
 import {IIdentifiable} from '../../utils/IIdentifiable'
-import {INode} from './nodes/INode'
+import {ANode} from './nodes/ANode'
 
 interface ILayerProps extends IIdentifiable, IPositioned, IDimensioned {
 
@@ -14,7 +14,7 @@ interface ILayerState {
 
 export default abstract class Layer extends Component<ILayerProps, ILayerState> {
 
-	public readonly nodes: INode[]
+	public readonly nodes: ANode[]
 	public readonly canvas: RefObject<HTMLCanvasElement>
 	private ctx: CanvasRenderingContext2D | null
 
@@ -25,7 +25,7 @@ export default abstract class Layer extends Component<ILayerProps, ILayerState> 
 		this.ctx = null
 	}
 
-	public addNode(node: INode): void {
+	public addNode(node: ANode): void {
 		this.nodes.push(node)
 	}
 
@@ -33,6 +33,7 @@ export default abstract class Layer extends Component<ILayerProps, ILayerState> 
 		for (let i = 0; i < this.nodes.length; i++) {
 			this.nodes[i].update(this, timeStep)
 		}
+		this.nodes.forEach(node => node.updateBehaviours(this, timeStep))
 		this.nodes.forEach(node => node.update(this, timeStep))
 	}
 

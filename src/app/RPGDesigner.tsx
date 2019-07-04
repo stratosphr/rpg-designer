@@ -3,6 +3,8 @@ import Layer from './core/scene/Layer'
 import Game from './core/engine/Game'
 import Scene from './core/Scene'
 import Rectangle from './core/scene/nodes/shapes/Rectangle'
+import FourDirection from './core/engine/behaviors/FourDirection'
+import {EKey} from './utils/EKey'
 
 export default class RPGDesigner extends Component {
 
@@ -11,22 +13,15 @@ export default class RPGDesigner extends Component {
 	private layer3: RefObject<Layer> = React.createRef<Layer>()
 
 	private main(scene: Scene): void {
-		const speedFactor: number = 1
 		const rect1: Rectangle = new class extends Rectangle {
-
-			public update(layer: Layer, timeStep: number): void {
-				this.position = {x: this.position.x + timeStep * speedFactor * Math.random(), y: this.position.y}
-			}
 		}('rect1_l1', {x: 10, y: 10}, {w: 32, h: 32})
 		const rect2: Rectangle = new class extends Rectangle {
-
-			public update(layer: Layer, timeStep: number): void {
-				this.position = {x: this.position.x + timeStep * speedFactor * Math.random(), y: this.position.y}
-			}
-		}('rect1_l1', {x: 20, y: 100}, {w: 32, h: 32})
+		}('rect1_l2', {x: 20, y: 100}, {w: 600, h: 200})
+		rect1.addBehaviour(new FourDirection(0.1))
+		rect2.addBehaviour(new FourDirection(0.2, {up: EKey.Z, down: EKey.S, left: EKey.Q, right: EKey.D}))
 		this.layer1.current!.addNode(rect1)
 		this.layer1.current!.addNode(rect2)
-		Game.run(scene, 200)
+		Game.run(scene, 60)
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
