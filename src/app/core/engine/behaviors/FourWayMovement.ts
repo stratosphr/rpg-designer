@@ -4,11 +4,11 @@ import {EKey} from '../../../utils/EKey'
 import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
 
-export default class FourDirection extends ABehaviour {
+export default class FourWayMovement extends ABehaviour {
 
-	private readonly speed: number
+	public readonly speed: number
 	private readonly keys: IKeyedMovement
-	private readonly keysDown: { up: boolean, down: boolean, left: boolean, right: boolean }
+	public readonly keysDown: { up: boolean, down: boolean, left: boolean, right: boolean }
 
 	constructor(speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
 		super()
@@ -39,7 +39,7 @@ export default class FourDirection extends ABehaviour {
 		}
 	}
 
-	public update(layer: Layer, timeStep: number, node: ANode): void {
+	public applyToNode(node: ANode, layer: Layer, timeStep: number): void {
 		if (this.keysDown.left) {
 			node.setPosition({x: node.position.x - timeStep * this.speed, y: node.position.y})
 		} else if (this.keysDown.right) {

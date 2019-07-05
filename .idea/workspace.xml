@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4e1c236-76f9-454a-a982-f3931859c079" name="Default Changelist" comment="Added support for behaviours">
-      <change afterPath="$PROJECT_DIR$/src/app/core/engine/behaviors/ABehaviour.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/core/engine/behaviors/FourDirection.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/core/engine/behaviors/IKeyedMovement.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/core/scene/nodes/ANode.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/AShape.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/utils/EKey.ts" afterDir="false" />
+    <list default="true" id="d4e1c236-76f9-454a-a982-f3931859c079" name="Default Changelist" comment="Fixed undesired behaviours due to key down's code case sensitivity">
+      <change afterPath="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/Grid.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/utils/IGrid.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/RPGDesigner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/RPGDesigner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/scene/Layer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/scene/Layer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/scene/nodes/IDrawable.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/scene/nodes/IDrawable.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/scene/nodes/INode.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/IShape.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/engine/Game.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/engine/Game.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/engine/behaviors/ABehaviour.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/engine/behaviors/ABehaviour.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/engine/behaviors/FourDirection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/engine/behaviors/FourWayMovement.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/scene/nodes/ANode.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/scene/nodes/ANode.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/AShape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/AShape.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/Rectangle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/Rectangle.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/shapes/Rectangle.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -39,11 +36,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/shapes/AShape.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/ANode.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="390">
+              <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
               </folding>
@@ -51,35 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/IDrawable.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/ABehaviour.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/RPGDesigner.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
+            <state relative-caret-position="217">
+              <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -88,10 +73,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/FourDirection.ts">
+        <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/FourWayMovement.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+            <state relative-caret-position="442">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -100,19 +85,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/utils/EKey.ts">
+        <entry file="file://$PROJECT_DIR$/src/app/core/scene/Layer.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/IKeyedMovement.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="375">
+              <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -120,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/core/Scene.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+            <state relative-caret-position="255">
+              <caret line="19" column="79" selection-start-line="19" selection-start-column="79" selection-end-line="19" selection-end-column="79" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -130,13 +106,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/core/scene/Layer.tsx">
+        <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/shapes/Grid.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+            <state relative-caret-position="15">
+              <caret line="7" column="70" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
               <folding>
-                <element signature="e#0#49#0" expanded="true" />
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/utils/IGrid.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -153,6 +138,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>conso</find>
       <find>console.lo</find>
     </findStrings>
   </component>
@@ -162,9 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/App.css" />
-        <option value="$PROJECT_DIR$/src/index.css" />
-        <option value="$PROJECT_DIR$/src/App.tsx" />
         <option value="$PROJECT_DIR$/src/RPGDesigner.tsx" />
         <option value="$PROJECT_DIR$/src/index.tsx" />
         <option value="$PROJECT_DIR$/public/index.html" />
@@ -193,21 +176,28 @@
         <option value="$PROJECT_DIR$/src/app/core/scene/nodes/Rectangle.ts" />
         <option value="$PROJECT_DIR$/src/app/core/scene/nodes/IRedrawable.ts" />
         <option value="$PROJECT_DIR$/src/app/core/engine/Game.ts" />
-        <option value="$PROJECT_DIR$/src/app/core/Scene.tsx" />
         <option value="$PROJECT_DIR$/src/app/core/scene/nodes/INode.ts" />
         <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/ABehavior.ts" />
         <option value="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/IShape.ts" />
-        <option value="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/AShape.ts" />
         <option value="$PROJECT_DIR$/src/app/utils/EKeys.ts" />
         <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/IKeyedMovement.ts" />
-        <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/GridMovement.ts" />
         <option value="$PROJECT_DIR$/src/app/core/scene/Layer.tsx" />
-        <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/ABehaviour.ts" />
         <option value="$PROJECT_DIR$/src/app/core/scene/nodes/IDrawable.ts" />
-        <option value="$PROJECT_DIR$/src/app/core/scene/nodes/ANode.ts" />
         <option value="$PROJECT_DIR$/src/app/utils/EKey.ts" />
+        <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/IVisitableBehaviour.ts" />
+        <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/IBehaviourVisitor.ts" />
+        <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/ABehaviourVisitor.ts" />
+        <option value="$PROJECT_DIR$/src/app/core/scene/nodes/ANode.ts" />
+        <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/ABehaviour.ts" />
         <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/FourDirection.ts" />
+        <option value="$PROJECT_DIR$/src/app/core/Scene.tsx" />
+        <option value="$PROJECT_DIR$/src/app/core/scene/nodes/Grid.ts" />
+        <option value="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/AShape.ts" />
+        <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/GridMovement.ts" />
+        <option value="$PROJECT_DIR$/src/app/utils/IGrid.ts" />
+        <option value="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/Grid.ts" />
         <option value="$PROJECT_DIR$/src/app/core/scene/nodes/shapes/Rectangle.ts" />
+        <option value="$PROJECT_DIR$/src/app/core/engine/behaviors/FourWayMovement.ts" />
         <option value="$PROJECT_DIR$/src/app/RPGDesigner.tsx" />
       </list>
     </option>
@@ -311,7 +301,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/core/scene/nodes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/app/core/engine/behaviors" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -326,15 +316,16 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app/core/scene/nodes" />
-      <recent name="$PROJECT_DIR$/src/app/components/nodes" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/app/core/scene/nodes/shapes" />
       <recent name="$PROJECT_DIR$/src/app/core/scene" />
       <recent name="$PROJECT_DIR$/src/app/core/scene/nodes" />
       <recent name="$PROJECT_DIR$/src/app/core" />
+      <recent name="$PROJECT_DIR$/src/app/components/nodes" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/core/engine/behaviors" />
+      <recent name="$PROJECT_DIR$/src/app/core/scene/nodes" />
       <recent name="$PROJECT_DIR$/src/app/components/nodes" />
     </key>
   </component>
@@ -376,7 +367,7 @@
       <option name="presentableId" value="Default" />
       <updated>1562068595743</updated>
       <workItem from="1562068598793" duration="55627000" />
-      <workItem from="1562266446912" duration="5668000" />
+      <workItem from="1562266446912" duration="16553000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented scene with dimensions and position">
       <created>1562072496103</created>
@@ -441,11 +432,25 @@
       <option name="project" value="LOCAL" />
       <updated>1562199059577</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added support for nodes behaviours">
+      <created>1562272254184</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1562272254184</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Fixed undesired behaviours due to key down's code case sensitivity">
+      <created>1562274868351</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1562274868351</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61295000" />
+    <option name="totallyTimeSpent" value="72180000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
@@ -457,7 +462,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32894737" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32894737" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49973643" visible="true" weight="0.32894737" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -467,7 +472,7 @@
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32894737" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5002636" side_tool="true" visible="true" weight="0.32894737" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32894737" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -488,7 +493,9 @@
     <MESSAGE value="Scene now also accepts a single layer as child" />
     <MESSAGE value="Layer's context is now private" />
     <MESSAGE value="Rectangle is now abstract and does not implement the update method (no node should implement it)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rectangle is now abstract and does not implement the update method (no node should implement it)" />
+    <MESSAGE value="Added support for nodes behaviours" />
+    <MESSAGE value="Fixed undesired behaviours due to key down's code case sensitivity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed undesired behaviours due to key down's code case sensitivity" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -585,67 +592,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/IUpdatable.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/shapes/AShape.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/core/scene/Layer.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/IDrawable.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/ABehaviour.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/core/Scene.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/utils/EKey.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -656,42 +606,150 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/FourDirection.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/utils/EKey.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+        <state relative-caret-position="105">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/IVisitableBehaviour.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/ABehaviourVisitor.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/IBehaviourVisitor.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/shapes/Rectangle.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/IUpdatable.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/RPGDesigner.tsx">
+    <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/ABehaviour.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
+        <state relative-caret-position="45">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/ANode.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="390">
+          <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
           <folding>
             <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core/scene/Layer.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/shapes/AShape.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/GridMovement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core/Scene.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="79" selection-start-line="19" selection-start-column="79" selection-end-line="19" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/utils/IGrid.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/shapes/Grid.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="7" column="70" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core/scene/nodes/shapes/Rectangle.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core/engine/behaviors/FourWayMovement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/RPGDesigner.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -3,6 +3,6 @@ import Layer from '../../scene/Layer'
 
 export abstract class ABehaviour {
 
-	public abstract update(layer: Layer, timeStep: number, node: ANode): void
+	public abstract applyToNode(node: ANode, layer: Layer, timeStep: number): void
 
 }

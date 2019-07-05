@@ -19,8 +19,4 @@ export default abstract class Rectangle extends AShape implements IPositioned, I
 		context.fillRect(this.position.x, this.position.y, this.dimensions.w, this.dimensions.h)
 	}
 
-	public update(layer: Layer, timeStep: number): void {
-
-	}
-
 }

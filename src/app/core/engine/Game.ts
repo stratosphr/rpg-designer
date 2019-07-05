@@ -24,7 +24,7 @@ export default class Game {
 	}
 
 	private static panic(timeStep: number) {
-		console.error('The update process is too slow to render the game at expected refresh rate (' + Math.round(1000 / timeStep) + ' frames per second)')
+		console.error('The applyToNode process is too slow to render the game at expected refresh rate (' + Math.round(1000 / timeStep) + ' frames per second)')
 	}
 
 }
