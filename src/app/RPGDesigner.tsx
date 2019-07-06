@@ -11,6 +11,7 @@ import {GridMovement} from './core/engine/behaviors/GridMovement'
 import SpriteAnimation from './core/scene/nodes/settings/SpriteAnimation'
 import {IBoundaries} from './utils/IBoundaries'
 import skeleton from '../resources/skeleton_spritesheet.png'
+import HeightWayMovement from './core/engine/behaviors/HeightWayMovement'
 
 export default class RPGDesigner extends Component {
 
@@ -41,7 +42,7 @@ export default class RPGDesigner extends Component {
 		sprite1.addBehaviour(new GridMovement(1, grid, defaultKeys))
 		sprite2.addBehaviour(new GridMovement(1, grid, defaultKeys))
 		sprite3.addBehaviour(new GridMovement(1, grid, defaultKeys))
-		sprite4.addBehaviour(new GridMovement(1, grid, defaultKeys))
+		sprite4.addBehaviour(new HeightWayMovement(1, defaultKeys))
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(sprite1)
 		this.layer1.current!.addNode(sprite2)
