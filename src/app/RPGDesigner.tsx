@@ -3,10 +3,11 @@ import Layer from './core/scene/Layer'
 import Game from './core/engine/Game'
 import Scene from './core/Scene'
 import Rectangle from './core/scene/nodes/shapes/Rectangle'
-import FourWayMovement from './core/engine/behaviors/FourWayMovement'
+import HeightWayMovement from './core/engine/behaviors/HeightWayMovement'
 import {EKey} from './utils/EKey'
 import {Grid} from './core/scene/nodes/shapes/Grid'
 import {GridMovement} from './core/engine/behaviors/GridMovement'
+import FourWayMovement from './core/engine/behaviors/FourWayMovement'
 
 export default class RPGDesigner extends Component {
 
@@ -23,9 +24,9 @@ export default class RPGDesigner extends Component {
 		}('rect3_l2', {x: 20, y: 100}, {w: 32, h: 32})
 		const grid: Grid = new class extends Grid {
 		}('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 32, h: 32})
-		rect1.addBehaviour(new GridMovement(1, grid))
-		rect2.addBehaviour(new GridMovement(0.1, {nbCells: {x: 28, y: 16}, cellsDimensions: {w: 32, h: 32}}, {up: EKey.Z, down: EKey.S, left: EKey.Q, right: EKey.D}))
-		rect3.addBehaviour(new FourWayMovement(0.2, {up: EKey.NONE, down: EKey.NONE, left: EKey.NONE, right: EKey.NONE}))
+		rect1.addBehaviour(new HeightWayMovement(1))
+		rect2.addBehaviour(new GridMovement(0.2, {nbCells: {x: 28, y: 16}, cellsDimensions: {w: 32, h: 32}}, {up: EKey.Z, down: EKey.S, left: EKey.Q, right: EKey.D}))
+		rect3.addBehaviour(new FourWayMovement(0.2, {up: EKey.I, down: EKey.K, left: EKey.J, right: EKey.L}))
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(rect1)
 		this.layer1.current!.addNode(rect2)

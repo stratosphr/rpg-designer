@@ -1,4 +1,4 @@
-import FourWayMovement from './FourWayMovement'
+import HeightWayMovement from './HeightWayMovement'
 import IKeyedMovement from './IKeyedMovement'
 import {IGrid} from '../../../utils/IGrid'
 import {ANode} from '../../scene/nodes/ANode'
@@ -6,7 +6,7 @@ import Layer from '../../scene/Layer'
 import {IVector} from '../../../utils/IVector'
 import {EKey} from '../../../utils/EKey'
 
-export class GridMovement extends FourWayMovement {
+export class GridMovement extends HeightWayMovement {
 
 	private dir: IVector
 	private offset: { x: number; y: number } | null

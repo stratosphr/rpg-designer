@@ -6,8 +6,12 @@ export enum EKey {
 	LEFT = 'arrowleft',
 	RIGHT = 'arrowright',
 	D = 'd',
+	I = 'i',
+	J = 'j',
+	K = 'k',
+	L = 'l',
 	Q = 'q',
 	S = 's',
-	Z = 'z',
+	Z = 'z'
 
 }
