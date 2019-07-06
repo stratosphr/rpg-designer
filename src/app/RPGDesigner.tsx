@@ -32,13 +32,13 @@ export default class RPGDesigner extends Component {
 			}
 		}('rect1_l1', {x: 320, y: 0}, {w: 32, h: 32})
 		const rect2: Rectangle = new class extends Rectangle {
-		}('rect2_l1', {x: 16, y: 64}, {w: 32, h: 32})
+		}('rect2_l1', {x: 16, y: 64}, {w: 16, h: 48})
 		const rect3: Rectangle = new class extends Rectangle {
 		}('rect3_l2', {x: 20, y: 100}, {w: 32, h: 32})
 		const grid: Grid = new class extends Grid {
-		}('grid', {x: 0, y: 0}, {w: 32, h: 32}, {w: 28, h: 16})
+		}('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 16, h: 48})
 		rect1.addBehaviour(new FourWayMovement(0.7))
-		rect2.addBehaviour(new GridMovement(0.2, {nbCells: {w: 28, h: 16}, cellsDimensions: {w: 32, h: 32}}, {up: EKey.Z, down: EKey.S, left: EKey.Q, right: EKey.D}))
+		rect2.addBehaviour(new GridMovement(0.2, {nbCells: {x: 28, y: 16}, cellsDimensions: {w: 16, h: 48}}, {up: EKey.Z, down: EKey.S, left: EKey.Q, right: EKey.D}))
 		rect3.addBehaviour(new FourWayMovement(0.2, {up: EKey.NONE, down: EKey.NONE, left: EKey.NONE, right: EKey.NONE}))
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(rect1)

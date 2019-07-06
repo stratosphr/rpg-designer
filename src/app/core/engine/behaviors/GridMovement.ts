@@ -20,7 +20,7 @@ export class GridMovement extends FourWayMovement {
 
 	public applyToNode(node: ANode, layer: Layer, timeStep: number): void {
 		if (this.offset === null) {
-			this.offset = {x: node.position.x % 32, y: node.position.y % 32}
+			this.offset = {x: node.position.x % this.grid.cellsDimensions.w, y: node.position.y % this.grid.cellsDimensions.h}
 		}
 		if (this.keysDown.left && this.dir.y === 0) {
 			this.moveLeft(node, timeStep)
@@ -29,7 +29,7 @@ export class GridMovement extends FourWayMovement {
 			this.moveRight(node, timeStep)
 			this.dir = {x: 1, y: this.dir.y}
 		} else if (this.dir.x === -1) {
-			let limitX: number = Math.floor(node.position.x / 32) * 32
+			let limitX: number = Math.floor(node.position.x / this.grid.cellsDimensions.w) * this.grid.cellsDimensions.w
 			if (node.position.x - timeStep * this.speed < limitX) {
 				node.setPosition({x: limitX, y: node.position.y})
 				this.dir = {x: 0, y: this.dir.y}
@@ -37,7 +37,7 @@ export class GridMovement extends FourWayMovement {
 				this.moveLeft(node, timeStep)
 			}
 		} else if (this.dir.x === 1) {
-			let limitX: number = Math.ceil(node.position.x / 32) * 32
+			let limitX: number = Math.ceil(node.position.x / this.grid.cellsDimensions.w) * this.grid.cellsDimensions.w
 			if (node.position.x + timeStep * this.speed > limitX) {
 				node.setPosition({x: limitX, y: node.position.y})
 				this.dir = {x: 0, y: this.dir.y}
@@ -51,7 +51,7 @@ export class GridMovement extends FourWayMovement {
 			this.moveDown(node, timeStep)
 			this.dir = {x: this.dir.x, y: 1}
 		} else if (this.dir.y === -1) {
-			let limitY: number = Math.floor(node.position.y / 32) * 32
+			let limitY: number = Math.floor(node.position.y / this.grid.cellsDimensions.h) * this.grid.cellsDimensions.h
 			if (node.position.y - timeStep * this.speed < limitY) {
 				node.setPosition({x: node.position.x, y: limitY})
 				this.dir = {x: this.dir.x, y: 0}
@@ -59,7 +59,7 @@ export class GridMovement extends FourWayMovement {
 				this.moveUp(node, timeStep)
 			}
 		} else if (this.dir.y === 1 && this.dir.x === 0) {
-			let limitY: number = Math.ceil(node.position.y / 32) * 32
+			let limitY: number = Math.ceil(node.position.y / this.grid.cellsDimensions.h) * this.grid.cellsDimensions.h
 			if (node.position.y + timeStep * this.speed > limitY) {
 				node.setPosition({x: node.position.x, y: limitY})
 				this.dir = {x: this.dir.x, y: 0}
