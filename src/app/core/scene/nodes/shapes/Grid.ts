@@ -18,7 +18,6 @@ export abstract class Grid extends AShape implements IGrid, IPositioned {
 
 	public draw(layer: Layer, context: CanvasRenderingContext2D): void {
 		context.lineWidth = 1
-		context.translate(0.5, 0.5)
 		context.beginPath()
 		for (let y = this.position.y; y < (this.nbCells.h + 1) * this.cellsDimensions.h; y += this.cellsDimensions.h) {
 			context.moveTo(this.position.x, y)
@@ -29,18 +28,6 @@ export abstract class Grid extends AShape implements IGrid, IPositioned {
 			context.lineTo(x, this.position.y + this.nbCells.h * this.cellsDimensions.h)
 		}
 		context.stroke()
-		context.translate(-0.5, -0.5)
-		/*for (let i = 0; i < 10; i++) {
-			let iStrokeWidth = 1 + i
-			let iTranslate = (iStrokeWidth % 2) / 2
-			context.translate(iTranslate, iTranslate)
-			context.lineWidth = iStrokeWidth
-			context.beginPath()
-			context.moveTo(5 + i * 14, 5)
-			context.lineTo(5 + i * 14, 140)
-			context.stroke()	        	        // reset the translation back to zero
-			context.translate(-iTranslate, -iTranslate)
-		}*/
 	}
 
 }

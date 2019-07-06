@@ -44,6 +44,7 @@ export default abstract class Layer extends Component<ILayerProps, ILayerState> 
 
 	public componentDidMount(): void {
 		this.ctx = this.canvas.current!.getContext('2d')
+		this.ctx!.translate(0.5, 0.5)
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {

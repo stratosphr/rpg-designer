@@ -7,7 +7,9 @@ import FourWayMovement from './core/engine/behaviors/FourWayMovement'
 import {EKey} from './utils/EKey'
 import {Grid} from './core/scene/nodes/shapes/Grid'
 import {IVector} from './utils/IVector'
+import {GridMovement} from './core/engine/behaviors/GridMovement'
 
+// TODO: set speed in pixel per frame
 export default class RPGDesigner extends Component {
 
 	private layer1: RefObject<Layer> = React.createRef<Layer>()
@@ -19,7 +21,7 @@ export default class RPGDesigner extends Component {
 			private dir: IVector = {x: 1, y: 1}
 
 			public update(layer: Layer, timeStep: number): void {
-				let speed: number = 0.3
+				let speed: number = 0.1
 				if ((this.position.x <= layer.props.position.x && this.dir.x === -1) || (this.position.x + this.dimensions.w >= layer.props.position.x + layer.props.dimensions.w && this.dir.x === 1)) {
 					this.dir = {x: -this.dir.x, y: this.dir.y}
 				}
@@ -30,19 +32,19 @@ export default class RPGDesigner extends Component {
 			}
 		}('rect1_l1', {x: 320, y: 0}, {w: 32, h: 32})
 		const rect2: Rectangle = new class extends Rectangle {
-		}('rect2_l1', {x: 20, y: 100}, {w: 32, h: 32})
+		}('rect2_l1', {x: 16, y: 64}, {w: 32, h: 32})
 		const rect3: Rectangle = new class extends Rectangle {
 		}('rect3_l2', {x: 20, y: 100}, {w: 32, h: 32})
 		const grid: Grid = new class extends Grid {
 		}('grid', {x: 0, y: 0}, {w: 32, h: 32}, {w: 28, h: 16})
 		rect1.addBehaviour(new FourWayMovement(0.7))
-		rect2.addBehaviour(new FourWayMovement(0.2, {up: EKey.Z, down: EKey.S, left: EKey.Q, right: EKey.D}))
-		rect3.addBehaviour(new FourWayMovement(0.2, {up: EKey.NONE, down: EKey.NONE, left: EKey.Q, right: EKey.D}))
+		rect2.addBehaviour(new GridMovement(0.2, {nbCells: {w: 28, h: 16}, cellsDimensions: {w: 32, h: 32}}, {up: EKey.Z, down: EKey.S, left: EKey.Q, right: EKey.D}))
+		rect3.addBehaviour(new FourWayMovement(0.2, {up: EKey.NONE, down: EKey.NONE, left: EKey.NONE, right: EKey.NONE}))
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(rect1)
 		this.layer1.current!.addNode(rect2)
 		this.layer2.current!.addNode(rect3)
-		Game.run(scene, 60)
+		Game.run(scene, 120)
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
