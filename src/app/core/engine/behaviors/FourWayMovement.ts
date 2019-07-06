@@ -2,9 +2,10 @@ import IKeyedMovement from './IKeyedMovement'
 import {EKey} from '../../../utils/EKey'
 import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
-import HeightWayMovement from './HeightWayMovement'
+import {IBehaviourListener} from './IBehaviourListener'
+import AMovement from './AMovement'
 
-export default class FourWayMovement extends HeightWayMovement {
+export default class FourWayMovement extends AMovement {
 
 	constructor(speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
 		super(speed, keys)
@@ -20,6 +21,10 @@ export default class FourWayMovement extends HeightWayMovement {
 		} else if (this.keysDown.down) {
 			this.moveDown(node)
 		}
+	}
+
+	protected notifyListener(listener: IBehaviourListener, event: string): void {
+		listener.handleBehaviourNotification(this, event)
 	}
 
 }

@@ -11,7 +11,6 @@ import {GridMovement} from './core/engine/behaviors/GridMovement'
 import SpriteAnimation from './core/scene/nodes/settings/SpriteAnimation'
 import {IBoundaries} from './utils/IBoundaries'
 import skeleton from '../resources/skeleton_spritesheet.png'
-import HeightWayMovement from './core/engine/behaviors/HeightWayMovement'
 
 export default class RPGDesigner extends Component {
 
@@ -34,20 +33,11 @@ export default class RPGDesigner extends Component {
 		const animation2: SpriteAnimation = new SpriteAnimation('down', spriteSheet, animationDown, animationDown.length)
 		const animation3: SpriteAnimation = new SpriteAnimation('left', spriteSheet, animationLeft, animationLeft.length)
 		const animation4: SpriteAnimation = new SpriteAnimation('right', spriteSheet, animationRight, animationRight.length)
-		const sprite1: Sprite = new Sprite('sprite1', {x: 128, y: 128}, spriteSheet, animation1)
-		const sprite2: Sprite = new Sprite('sprite2', {x: 192, y: 128}, spriteSheet, animation2)
-		const sprite3: Sprite = new Sprite('sprite3', {x: 256, y: 128}, spriteSheet, animation3)
-		const sprite4: Sprite = new Sprite('sprite4', {x: 320, y: 128}, spriteSheet, animation4)
+		const sprite1: Sprite = new Sprite('sprite1', {x: 128, y: 128}, spriteSheet, [animation1, animation2, animation3, animation4])
 		const grid: Grid = new Grid('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 64, h: 64})
 		sprite1.addBehaviour(new GridMovement(1, grid, defaultKeys))
-		sprite2.addBehaviour(new GridMovement(1, grid, defaultKeys))
-		sprite3.addBehaviour(new GridMovement(1, grid, defaultKeys))
-		sprite4.addBehaviour(new HeightWayMovement(1, defaultKeys))
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(sprite1)
-		this.layer1.current!.addNode(sprite2)
-		this.layer1.current!.addNode(sprite3)
-		this.layer1.current!.addNode(sprite4)
 		Game.run(scene, 120)
 	}
 

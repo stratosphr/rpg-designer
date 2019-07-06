@@ -1,12 +1,13 @@
-import HeightWayMovement from './HeightWayMovement'
 import IKeyedMovement from './IKeyedMovement'
 import {IGrid} from '../../../utils/IGrid'
 import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
 import {IVector} from '../../../utils/IVector'
 import {EKey} from '../../../utils/EKey'
+import {IBehaviourListener} from './IBehaviourListener'
+import AMovement from './AMovement'
 
-export class GridMovement extends HeightWayMovement {
+export class GridMovement extends AMovement {
 
 	private dir: IVector
 	private offset: { x: number; y: number } | null
@@ -68,6 +69,10 @@ export class GridMovement extends HeightWayMovement {
 				this.moveDown(node)
 			}
 		}
+	}
+
+	protected notifyListener(listener: IBehaviourListener, event: string): void {
+		listener.handleBehaviourNotification(this, event)
 	}
 
 }

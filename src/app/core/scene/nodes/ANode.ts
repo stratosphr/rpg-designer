@@ -4,8 +4,10 @@ import {IDrawable} from './IDrawable'
 import Layer from '../Layer'
 import {ABehaviour} from '../../engine/behaviors/ABehaviour'
 import {IVector} from '../../../utils/IVector'
+import {IBehaviourListener} from '../../engine/behaviors/IBehaviourListener'
+import HeightWayMovement from '../../engine/behaviors/HeightWayMovement'
 
-export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable {
+export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable, IBehaviourListener {
 
 	public readonly id: string
 	public position: IVector
@@ -19,6 +21,7 @@ export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable {
 
 	public addBehaviour(behaviour: ABehaviour): void {
 		this.behaviours.push(behaviour)
+		behaviour.addListener(this)
 	}
 
 	public updateBehaviours(layer: Layer) {
@@ -32,6 +35,9 @@ export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable {
 
 	public setPosition(position: IVector) {
 		this.position = position
+	}
+
+	public handleBehaviourNotification(heightWayMovement: HeightWayMovement, event: string): void {
 	}
 
 }

@@ -3,18 +3,21 @@ import Layer from '../../Layer'
 import {IVector} from '../../../../utils/IVector'
 import SpriteSheet from '../settings/SpriteSheet'
 import SpriteAnimation from '../settings/SpriteAnimation'
+import HeightWayMovement from '../../../engine/behaviors/HeightWayMovement'
 
 export default class Sprite extends ANode {
 
 	private spriteSheet: SpriteSheet
+	private animations: SpriteAnimation[]
 	private animation: SpriteAnimation
 	private frameIndex: number
 	private frameCounter: number
 
-	constructor(id: string, position: IVector, spriteSheet: SpriteSheet, animation: SpriteAnimation) {
+	constructor(id: string, position: IVector, spriteSheet: SpriteSheet, animations: SpriteAnimation[]) {
 		super(id, position)
 		this.spriteSheet = spriteSheet
-		this.animation = animation
+		this.animations = animations
+		this.animation = animations[0]
 		this.frameIndex = 0
 		this.frameCounter = 0
 	}
@@ -28,6 +31,18 @@ export default class Sprite extends ANode {
 
 	public draw(layer: Layer, context: CanvasRenderingContext2D): void {
 		context.drawImage(this.spriteSheet.img, this.animation.frames[this.frameIndex].x, this.animation.frames[this.frameIndex].y, this.animation.frames[this.frameIndex].w, this.animation.frames[this.frameIndex].h, this.position.x, this.position.y, this.animation.frames[this.frameIndex].w, this.animation.frames[this.frameIndex].h)
+	}
+
+	public handleBehaviourNotification(heightWayMovement: HeightWayMovement, event: string): void {
+		if (event === 'moveUp') {
+			this.animation = this.animations[0]
+		} else if (event === 'moveDown') {
+			this.animation = this.animations[1]
+		} else if (event === 'moveLeft') {
+			this.animation = this.animations[2]
+		} else if (event === 'moveRight') {
+			this.animation = this.animations[3]
+		}
 	}
 
 }
