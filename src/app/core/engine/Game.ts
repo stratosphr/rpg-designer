@@ -11,7 +11,7 @@ export default class Game {
 		lastFrameTimeMs = timestamp
 		let numUpdateSteps = 0
 		while (delta >= timeStep) {
-			scene.update()
+			scene.update(timeStep)
 			delta -= timeStep
 			if (++numUpdateSteps >= 200) {
 				Game.panic(timeStep)

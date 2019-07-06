@@ -21,15 +21,14 @@ export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable {
 		this.behaviours.push(behaviour)
 	}
 
-	public abstract draw(layer: Layer, context: CanvasRenderingContext2D): void
-
 	public updateBehaviours(layer: Layer) {
 		this.behaviours.forEach(behaviour => behaviour.applyToNode(this, layer))
 	}
 
-	public update(layer: Layer): void {
-
+	public update(layer: Layer, timeStep: number): void {
 	}
+
+	public abstract draw(layer: Layer, context: CanvasRenderingContext2D): void
 
 	public setPosition(position: IVector) {
 		this.position = position

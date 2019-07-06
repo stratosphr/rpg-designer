@@ -29,9 +29,9 @@ export default abstract class Layer extends Component<ILayerProps, ILayerState> 
 		this.nodes.push(node)
 	}
 
-	public update(): void {
+	public update(timeStep: number): void {
 		this.nodes.forEach(node => node.updateBehaviours(this))
-		this.nodes.forEach(node => node.update(this))
+		this.nodes.forEach(node => node.update(this, timeStep))
 	}
 
 	public draw(): void {
@@ -42,6 +42,7 @@ export default abstract class Layer extends Component<ILayerProps, ILayerState> 
 	public componentDidMount(): void {
 		this.ctx = this.canvas.current!.getContext('2d')
 		this.ctx!.translate(0.5, 0.5)
+		this.ctx!.imageSmoothingEnabled = false
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {

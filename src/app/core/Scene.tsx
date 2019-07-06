@@ -16,8 +16,8 @@ interface ISceneState {
 
 export default class Scene extends Component<ISceneProps, ISceneState> {
 
-	public update(): void {
-		React.Children.forEach(this.props.children, layer => layer.ref.current.update())
+	public update(timeStep: number): void {
+		React.Children.forEach(this.props.children, layer => layer.ref.current.update(timeStep))
 	}
 
 	public drawLayers() {

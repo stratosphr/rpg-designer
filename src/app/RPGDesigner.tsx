@@ -8,19 +8,45 @@ import IKeyedMovement from './core/engine/behaviors/IKeyedMovement'
 import SpriteSheet from './core/scene/nodes/settings/SpriteSheet'
 import Sprite from './core/scene/nodes/sprites/Sprite'
 import {GridMovement} from './core/engine/behaviors/GridMovement'
+import SpriteAnimation from './core/scene/nodes/settings/SpriteAnimation'
+import {IBoundaries} from './utils/IBoundaries'
+import skeleton from '../resources/skeleton_spritesheet.png'
 
 export default class RPGDesigner extends Component {
 
 	private layer1: RefObject<Layer> = React.createRef<Layer>()
 
 	private main(scene: Scene): void {
+		const animationUp: IBoundaries[] = []
+		const animationDown: IBoundaries[] = []
+		const animationLeft: IBoundaries[] = []
+		const animationRight: IBoundaries[] = []
+		for (let i = 1; i < 9; i++) {
+			animationUp.push({x: i * 64, y: 0, w: 64, h: 64})
+			animationDown.push({x: i * 64, y: 128, w: 64, h: 64})
+			animationLeft.push({x: i * 64, y: 64, w: 64, h: 64})
+			animationRight.push({x: i * 64, y: 192, w: 64, h: 64})
+		}
 		const defaultKeys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}
-		const spriteSheet: SpriteSheet = new SpriteSheet('rect1_l1', 'https://i.stack.imgur.com/C3ZwL.png')
-		const sprite: Sprite = new Sprite('sprite1', {x: 128, y: 128}, spriteSheet, {x: 0, y: 0, w: 64, h: 64})
+		const spriteSheet: SpriteSheet = new SpriteSheet('spriteSheet1', skeleton)
+		const animation1: SpriteAnimation = new SpriteAnimation('up', spriteSheet, animationUp, animationUp.length)
+		const animation2: SpriteAnimation = new SpriteAnimation('down', spriteSheet, animationDown, animationDown.length)
+		const animation3: SpriteAnimation = new SpriteAnimation('left', spriteSheet, animationLeft, animationLeft.length)
+		const animation4: SpriteAnimation = new SpriteAnimation('right', spriteSheet, animationRight, animationRight.length)
+		const sprite1: Sprite = new Sprite('sprite1', {x: 128, y: 128}, spriteSheet, animation1)
+		const sprite2: Sprite = new Sprite('sprite2', {x: 192, y: 128}, spriteSheet, animation2)
+		const sprite3: Sprite = new Sprite('sprite3', {x: 256, y: 128}, spriteSheet, animation3)
+		const sprite4: Sprite = new Sprite('sprite4', {x: 320, y: 128}, spriteSheet, animation4)
 		const grid: Grid = new Grid('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 64, h: 64})
-		sprite.addBehaviour(new GridMovement(1, grid, defaultKeys))
-		this.layer1.current!.addNode(sprite)
+		sprite1.addBehaviour(new GridMovement(1, grid, defaultKeys))
+		sprite2.addBehaviour(new GridMovement(1, grid, defaultKeys))
+		sprite3.addBehaviour(new GridMovement(1, grid, defaultKeys))
+		sprite4.addBehaviour(new GridMovement(1, grid, defaultKeys))
 		this.layer1.current!.addNode(grid)
+		this.layer1.current!.addNode(sprite1)
+		this.layer1.current!.addNode(sprite2)
+		this.layer1.current!.addNode(sprite3)
+		this.layer1.current!.addNode(sprite4)
 		Game.run(scene, 120)
 	}
 
