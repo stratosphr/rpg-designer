@@ -35,7 +35,7 @@ export default abstract class Layer extends Component<ILayerProps, ILayerState> 
 	}
 
 	public draw(): void {
-		this.ctx!.clearRect(0, 0, this.props.dimensions.w, this.props.dimensions.h)
+		this.ctx!.clearRect(-0.5, -0.5, this.props.dimensions.w, this.props.dimensions.h)
 		this.nodes.forEach(node => node.draw(this, this.ctx!))
 	}
 
