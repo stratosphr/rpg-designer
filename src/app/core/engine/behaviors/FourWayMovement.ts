@@ -39,33 +39,33 @@ export default class FourWayMovement extends ABehaviour {
 		}
 	}
 
-	public applyToNode(node: ANode, layer: Layer, timeStep: number): void {
+	public applyToNode(node: ANode, layer: Layer): void {
 		if (this.keysDown.left) {
-			this.moveLeft(node, timeStep)
+			this.moveLeft(node)
 		} else if (this.keysDown.right) {
-			this.moveRight(node, timeStep)
+			this.moveRight(node)
 		}
 		if (this.keysDown.up) {
-			this.moveUp(node, timeStep)
+			this.moveUp(node)
 		} else if (this.keysDown.down) {
-			this.moveDown(node, timeStep)
+			this.moveDown(node)
 		}
 	}
 
-	protected moveLeft(node: ANode, timeStep: number) {
-		node.setPosition({x: node.position.x - timeStep * this.speed, y: node.position.y})
+	protected moveLeft(node: ANode) {
+		node.setPosition({x: node.position.x - this.speed, y: node.position.y})
 	}
 
-	protected moveRight(node: ANode, timeStep: number) {
-		node.setPosition({x: node.position.x + timeStep * this.speed, y: node.position.y})
+	protected moveRight(node: ANode) {
+		node.setPosition({x: node.position.x + this.speed, y: node.position.y})
 	}
 
-	protected moveUp(node: ANode, timeStep: number) {
-		node.setPosition({x: node.position.x, y: node.position.y - timeStep * this.speed})
+	protected moveUp(node: ANode) {
+		node.setPosition({x: node.position.x, y: node.position.y - this.speed})
 	}
 
-	protected moveDown(node: ANode, timeStep: number) {
-		node.setPosition({x: node.position.x, y: node.position.y + timeStep * this.speed})
+	protected moveDown(node: ANode) {
+		node.setPosition({x: node.position.x, y: node.position.y + this.speed})
 	}
 
 }

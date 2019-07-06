@@ -11,14 +11,13 @@ export default class Game {
 		lastFrameTimeMs = timestamp
 		let numUpdateSteps = 0
 		while (delta >= timeStep) {
-			scene.update(timeStep)
+			scene.update()
 			delta -= timeStep
 			if (++numUpdateSteps >= 200) {
 				Game.panic(timeStep)
 				break
 			}
 		}
-		//scene.clear()
 		scene.drawLayers()
 		window.requestAnimationFrame((timestamp) => Game.loop(scene, timeStep, timestamp, delta, lastFrameTimeMs))
 	}

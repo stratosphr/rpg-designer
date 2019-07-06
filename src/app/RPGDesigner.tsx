@@ -8,7 +8,6 @@ import {EKey} from './utils/EKey'
 import {Grid} from './core/scene/nodes/shapes/Grid'
 import {GridMovement} from './core/engine/behaviors/GridMovement'
 
-// TODO: set speed in pixel per frame
 export default class RPGDesigner extends Component {
 
 	private layer1: RefObject<Layer> = React.createRef<Layer>()
@@ -19,19 +18,19 @@ export default class RPGDesigner extends Component {
 		const rect1: Rectangle = new class extends Rectangle {
 		}('rect1_l1', {x: 320, y: 0}, {w: 32, h: 32})
 		const rect2: Rectangle = new class extends Rectangle {
-		}('rect2_l1', {x: 42, y: 38}, {w: 32, h: 32})
+		}('rect2_l1', {x: 52, y: 38}, {w: 32, h: 32})
 		const rect3: Rectangle = new class extends Rectangle {
 		}('rect3_l2', {x: 20, y: 100}, {w: 32, h: 32})
 		const grid: Grid = new class extends Grid {
 		}('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 32, h: 32})
-		rect1.addBehaviour(new FourWayMovement(0.3))
+		rect1.addBehaviour(new GridMovement(1, grid))
 		rect2.addBehaviour(new GridMovement(0.1, {nbCells: {x: 28, y: 16}, cellsDimensions: {w: 32, h: 32}}, {up: EKey.Z, down: EKey.S, left: EKey.Q, right: EKey.D}))
 		rect3.addBehaviour(new FourWayMovement(0.2, {up: EKey.NONE, down: EKey.NONE, left: EKey.NONE, right: EKey.NONE}))
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(rect1)
 		this.layer1.current!.addNode(rect2)
 		this.layer2.current!.addNode(rect3)
-		Game.run(scene, 144)
+		Game.run(scene, 120)
 	}
 
 	public render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {

@@ -29,12 +29,9 @@ export default abstract class Layer extends Component<ILayerProps, ILayerState> 
 		this.nodes.push(node)
 	}
 
-	public update(timeStep: number): void {
-		for (let i = 0; i < this.nodes.length; i++) {
-			this.nodes[i].update(this, timeStep)
-		}
-		this.nodes.forEach(node => node.updateBehaviours(this, timeStep))
-		this.nodes.forEach(node => node.update(this, timeStep))
+	public update(): void {
+		this.nodes.forEach(node => node.updateBehaviours(this))
+		this.nodes.forEach(node => node.update(this))
 	}
 
 	public draw(): void {

@@ -5,7 +5,7 @@ export abstract class AShape extends ANode {
 
 	public abstract draw(layer: Layer, context: CanvasRenderingContext2D): void
 
-	public update(layer: Layer, timeStep: number): void {
+	public update(layer: Layer): void {
 	}
 
 }
