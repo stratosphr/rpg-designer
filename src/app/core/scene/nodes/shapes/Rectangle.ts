@@ -5,7 +5,7 @@ import {IDimensions} from '../../../../utils/IDimensions'
 import Layer from '../../Layer'
 import {AShape} from './AShape'
 
-export default abstract class Rectangle extends AShape implements IPositioned, IDimensioned {
+export default class Rectangle extends AShape implements IPositioned, IDimensioned {
 
 	public dimensions: IDimensions
 

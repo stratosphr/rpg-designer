@@ -18,8 +18,8 @@ export default abstract class Layer extends Component<ILayerProps, ILayerState> 
 	public readonly canvas: RefObject<HTMLCanvasElement>
 	private ctx: CanvasRenderingContext2D | null
 
-	protected constructor(props: ILayerProps, context: any) {
-		super(props, context)
+	protected constructor(props: ILayerProps) {
+		super(props)
 		this.nodes = []
 		this.canvas = React.createRef<HTMLCanvasElement>()
 		this.ctx = null

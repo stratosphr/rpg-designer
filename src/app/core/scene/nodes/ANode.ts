@@ -27,7 +27,9 @@ export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable {
 		this.behaviours.forEach(behaviour => behaviour.applyToNode(this, layer))
 	}
 
-	public abstract update(layer: Layer): void
+	public update(layer: Layer): void {
+
+	}
 
 	public setPosition(position: IVector) {
 		this.position = position

@@ -5,7 +5,7 @@ import {IVector} from '../../../../utils/IVector'
 import {AShape} from './AShape'
 import {IPositioned} from '../../../../utils/IPositioned'
 
-export abstract class Grid extends AShape implements IGrid, IPositioned {
+export class Grid extends AShape implements IGrid, IPositioned {
 
 	public readonly nbCells: IVector
 	public readonly cellsDimensions: IDimensions
