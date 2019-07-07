@@ -1,8 +1,8 @@
 import {ANode} from '../ANode'
 import Layer from '../../Layer'
 import {IVector} from '../../../../utils/IVector'
-import SpriteSheet from '../settings/SpriteSheet'
-import SpriteAnimation from '../settings/SpriteAnimation'
+import SpriteSheet from './SpriteSheet'
+import SpriteAnimation from './SpriteAnimation'
 import HeightWayMovement from '../../../engine/behaviors/HeightWayMovement'
 
 export default class Sprite extends ANode {
