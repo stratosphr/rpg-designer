@@ -4,7 +4,6 @@ import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
 import {IVector} from '../../../utils/IVector'
 import {EKey} from '../../../utils/EKey'
-import {IBehaviourListener} from './IBehaviourListener'
 import AMovement from './AMovement'
 
 export class GridMovement extends AMovement {
@@ -69,10 +68,6 @@ export class GridMovement extends AMovement {
 				this.moveDown(node)
 			}
 		}
-	}
-
-	protected notifyListener(listener: IBehaviourListener, event: string): void {
-		listener.handleBehaviourNotification(this, event)
 	}
 
 }

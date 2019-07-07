@@ -2,7 +2,6 @@ import IKeyedMovement from './IKeyedMovement'
 import {EKey} from '../../../utils/EKey'
 import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
-import {IBehaviourListener} from './IBehaviourListener'
 import AMovement from './AMovement'
 
 export default class FourWayMovement extends AMovement {
@@ -21,10 +20,6 @@ export default class FourWayMovement extends AMovement {
 		} else if (this.keysDown.down) {
 			this.moveDown(node)
 		}
-	}
-
-	protected notifyListener(listener: IBehaviourListener, event: string): void {
-		listener.handleBehaviourNotification(this, event)
 	}
 
 }

@@ -5,7 +5,6 @@ import Layer from '../Layer'
 import {ABehaviour} from '../../engine/behaviors/ABehaviour'
 import {IVector} from '../../../utils/IVector'
 import {IBehaviourListener} from '../../engine/behaviors/IBehaviourListener'
-import HeightWayMovement from '../../engine/behaviors/HeightWayMovement'
 
 export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable, IBehaviourListener {
 
@@ -37,7 +36,7 @@ export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable, IBe
 		this.position = position
 	}
 
-	public handleBehaviourNotification(heightWayMovement: HeightWayMovement, event: string): void {
+	public notifyBehaviourEvent(event: string): void {
 	}
 
 }

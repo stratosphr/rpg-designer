@@ -15,10 +15,8 @@ export abstract class ABehaviour {
 	}
 
 	protected notifyListeners(event: string): void {
-		this.listeners.forEach(listener => this.notifyListener(listener, event))
+		this.listeners.forEach(listener => listener.notifyBehaviourEvent(event))
 	}
-
-	protected abstract notifyListener(listener: IBehaviourListener, event: string): void
 
 	public abstract applyToNode(node: ANode, layer: Layer): void
 

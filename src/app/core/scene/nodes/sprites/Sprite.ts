@@ -3,7 +3,6 @@ import Layer from '../../Layer'
 import {IVector} from '../../../../utils/IVector'
 import SpriteSheet from './SpriteSheet'
 import SpriteAnimation from './SpriteAnimation'
-import HeightWayMovement from '../../../engine/behaviors/HeightWayMovement'
 
 export default class Sprite extends ANode {
 
@@ -33,7 +32,7 @@ export default class Sprite extends ANode {
 		context.drawImage(this.spriteSheet.img, this.animation.frames[this.frameIndex].x, this.animation.frames[this.frameIndex].y, this.animation.frames[this.frameIndex].w, this.animation.frames[this.frameIndex].h, this.position.x, this.position.y, this.animation.frames[this.frameIndex].w, this.animation.frames[this.frameIndex].h)
 	}
 
-	public handleBehaviourNotification(heightWayMovement: HeightWayMovement, event: string): void {
+	public notifyBehaviourEvent(event: string): void {
 		if (event === 'moveUp') {
 			this.animation = this.animations[0]
 		} else if (event === 'moveDown') {

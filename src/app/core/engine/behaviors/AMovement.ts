@@ -3,7 +3,6 @@ import IKeyedMovement from './IKeyedMovement'
 import {EKey} from '../../../utils/EKey'
 import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
-import {IBehaviourListener} from './IBehaviourListener'
 
 export default class AMovement extends ABehaviour {
 
@@ -71,10 +70,6 @@ export default class AMovement extends ABehaviour {
 	protected moveDown(node: ANode) {
 		this.notifyListeners('moveDown')
 		node.setPosition({x: node.position.x, y: node.position.y + this.speed})
-	}
-
-	protected notifyListener(listener: IBehaviourListener, event: string): void {
-		listener.handleBehaviourNotification(this, event)
 	}
 
 }
