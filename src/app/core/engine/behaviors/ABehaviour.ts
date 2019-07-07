@@ -1,21 +1,12 @@
 import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
-import {IBehaviourListener} from './IBehaviourListener'
+import AEventNotifier from '../events/AEventNotifier'
+import {ITriggerableEvent} from '../events/ITriggerableEvent'
 
-export abstract class ABehaviour {
+export abstract class ABehaviour extends AEventNotifier {
 
-	private readonly listeners: IBehaviourListener[]
-
-	protected constructor() {
-		this.listeners = []
-	}
-
-	public addListener(node: IBehaviourListener): void {
-		this.listeners.push(node)
-	}
-
-	protected notifyListeners(event: string): void {
-		this.listeners.forEach(listener => listener.notifyBehaviourEvent(event))
+	protected constructor(category: string, triggerableEvents: ITriggerableEvent[] = []) {
+		super(category, triggerableEvents)
 	}
 
 	public abstract applyToNode(node: ANode, layer: Layer): void

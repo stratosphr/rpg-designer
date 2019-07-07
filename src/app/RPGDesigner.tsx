@@ -11,6 +11,7 @@ import {GridMovement} from './core/engine/behaviors/GridMovement'
 import SpriteAnimation from './core/scene/nodes/sprites/SpriteAnimation'
 import {IBoundaries} from './utils/IBoundaries'
 import skeleton from '../resources/skeleton_spritesheet.png'
+import EventHandler from './core/engine/events/EventHandler'
 
 export default class RPGDesigner extends Component {
 
@@ -35,7 +36,14 @@ export default class RPGDesigner extends Component {
 		const animation4: SpriteAnimation = new SpriteAnimation('right', spriteSheet, animationRight, animationRight.length)
 		const sprite1: Sprite = new Sprite('sprite1', {x: 128, y: 128}, spriteSheet, [animation1, animation2, animation3, animation4])
 		const grid: Grid = new Grid('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 64, h: 64})
-		sprite1.addBehaviour(new GridMovement(1, grid, defaultKeys))
+		let gridMovement = new GridMovement(1, grid, defaultKeys)
+		sprite1.addBehaviour(gridMovement)
+		new EventHandler(gridMovement, 'GridMovement', 'moveUp', (event: string) => {
+			console.log(event)
+		})
+		new EventHandler(gridMovement, 'GridMovement', 'moveRight', (event: string) => {
+			console.log(event)
+		})
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(sprite1)
 		Game.run(scene, 120)

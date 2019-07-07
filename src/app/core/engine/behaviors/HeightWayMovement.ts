@@ -5,7 +5,7 @@ import AMovement from './AMovement'
 export default class HeightWayMovement extends AMovement {
 
 	constructor(speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
-		super(speed, keys)
+		super('HeightWayMovement', [], speed, keys)
 	}
 
 }

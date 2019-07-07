@@ -7,7 +7,7 @@ import AMovement from './AMovement'
 export default class FourWayMovement extends AMovement {
 
 	constructor(speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
-		super(speed, keys)
+		super('FourWayMovement', [], speed, keys)
 	}
 
 	public applyToNode(node: ANode, layer: Layer): void {
@@ -20,6 +20,10 @@ export default class FourWayMovement extends AMovement {
 		} else if (this.keysDown.down) {
 			this.moveDown(node)
 		}
+	}
+
+	protected getTriggerableEvents(): { category: string; triggerableEvents: string[] }[] {
+		return super.getTriggerableEvents()
 	}
 
 }

@@ -13,7 +13,7 @@ export class GridMovement extends AMovement {
 	private grid: IGrid
 
 	constructor(speed: number, grid: IGrid, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
-		super(speed, keys)
+		super('GridMovement', [], speed, keys)
 		this.dir = {x: 0, y: 0}
 		this.grid = grid
 		this.offset = null

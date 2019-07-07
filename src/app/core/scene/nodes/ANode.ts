@@ -4,15 +4,17 @@ import {IDrawable} from './IDrawable'
 import Layer from '../Layer'
 import {ABehaviour} from '../../engine/behaviors/ABehaviour'
 import {IVector} from '../../../utils/IVector'
-import {IBehaviourListener} from '../../engine/behaviors/IBehaviourListener'
+import AEventNotifier from '../../engine/events/AEventNotifier'
+import {ITriggerableEvent} from '../../engine/events/ITriggerableEvent'
 
-export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable, IBehaviourListener {
+export abstract class ANode extends AEventNotifier implements IIdentifiable, IDrawable, IUpdatable {
 
 	public readonly id: string
 	public position: IVector
 	private readonly behaviours: ABehaviour[]
 
-	constructor(id: string, position: IVector) {
+	constructor(id: string, position: IVector, triggerableEvents: ITriggerableEvent[] = []) {
+		super(id, triggerableEvents)
 		this.id = id
 		this.position = position
 		this.behaviours = []
@@ -20,7 +22,6 @@ export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable, IBe
 
 	public addBehaviour(behaviour: ABehaviour): void {
 		this.behaviours.push(behaviour)
-		behaviour.addListener(this)
 	}
 
 	public updateBehaviours(layer: Layer) {
@@ -34,9 +35,6 @@ export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable, IBe
 
 	public setPosition(position: IVector) {
 		this.position = position
-	}
-
-	public notifyBehaviourEvent(event: string): void {
 	}
 
 }

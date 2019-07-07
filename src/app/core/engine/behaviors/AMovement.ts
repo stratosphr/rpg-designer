@@ -3,21 +3,26 @@ import IKeyedMovement from './IKeyedMovement'
 import {EKey} from '../../../utils/EKey'
 import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
+import {ITriggerableEvent} from '../events/ITriggerableEvent'
 
-export default class AMovement extends ABehaviour {
+export default abstract class AMovement extends ABehaviour {
 
 	public readonly speed: number
 	private readonly keys: IKeyedMovement
 	public readonly keysDown: { up: boolean, down: boolean, left: boolean, right: boolean }
 
-	constructor(speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
-		super()
+	protected constructor(category: string, triggerableEvents: ITriggerableEvent[] = [], speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
+		super(category, [{category: category, triggerableEvents: ['moveUp', 'moveDown', 'moveLeft', 'moveRight']}, ...triggerableEvents])
 		this.speed = speed
 		this.keys = keys
 		this.keysDown = {up: false, down: false, left: false, right: false}
 		this.handleKey = this.handleKey.bind(this)
 		document.addEventListener('keydown', ev => this.handleKey(ev, true), false)
 		document.addEventListener('keyup', ev => this.handleKey(ev, false), false)
+	}
+
+	protected getTriggerableEvents(): { category: string; triggerableEvents: string[] }[] {
+		return [{category: this.category, triggerableEvents: []}]
 	}
 
 	private handleKey(ev: KeyboardEvent, isDown: boolean) {
