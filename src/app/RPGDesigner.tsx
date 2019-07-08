@@ -35,17 +35,19 @@ export default class RPGDesigner extends Component {
 		const animation3: SpriteAnimation = new SpriteAnimation('left', spriteSheet, animationLeft, animationLeft.length)
 		const animation4: SpriteAnimation = new SpriteAnimation('right', spriteSheet, animationRight, animationRight.length)
 		const sprite1: Sprite = new Sprite('sprite1', {x: 128, y: 128}, spriteSheet, [animation1, animation2, animation3, animation4])
+		const sprite2: Sprite = new Sprite('sprite2', {x: 192, y: 128}, spriteSheet, [animation1, animation2, animation3, animation4])
 		const grid: Grid = new Grid('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 64, h: 64})
 		let gridMovement = new GridMovement(1, grid, defaultKeys)
 		sprite1.addBehaviour(gridMovement)
-		new EventHandler(gridMovement, 'GridMovement', 'moveUp', (event: string) => {
+		EventHandler.create(gridMovement, 'GridMovement', 'moveUp', (event: string) => {
 			console.log(event)
 		})
-		new EventHandler(gridMovement, 'GridMovement', 'moveRight', (event: string) => {
+		EventHandler.create(gridMovement, 'GridMovement', 'moveRight', (event: string) => {
 			console.log(event)
 		})
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(sprite1)
+		this.layer1.current!.addNode(sprite2)
 		Game.run(scene, 120)
 	}
 
