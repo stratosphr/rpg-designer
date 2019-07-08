@@ -1,7 +1,9 @@
+import {EEventType} from './EEventType'
+import AEvent from './AEvent'
+
 export interface IEventListener {
 
-	readonly category: string
-	readonly eventName: string
-	readonly handler: (event: string) => void
+	readonly eventType: EEventType
+	readonly handler: (event: AEvent) => void
 
 }

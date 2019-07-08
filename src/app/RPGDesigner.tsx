@@ -12,6 +12,8 @@ import SpriteAnimation from './core/scene/nodes/sprites/SpriteAnimation'
 import {IBoundaries} from './utils/IBoundaries'
 import skeleton from '../resources/skeleton_spritesheet.png'
 import EventHandler from './core/engine/events/EventHandler'
+import {EEventType} from './core/engine/events/EEventType'
+import AEvent from './core/engine/events/AEvent'
 
 export default class RPGDesigner extends Component {
 
@@ -39,10 +41,16 @@ export default class RPGDesigner extends Component {
 		const grid: Grid = new Grid('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 64, h: 64})
 		let gridMovement = new GridMovement(1, grid, defaultKeys)
 		sprite1.addBehaviour(gridMovement)
-		EventHandler.create(gridMovement, 'GridMovement', 'moveUp', (event: string) => {
+		EventHandler.create(gridMovement, EEventType.MOVE_UP, (event: AEvent) => {
 			console.log(event)
 		})
-		EventHandler.create(gridMovement, 'GridMovement', 'moveRight', (event: string) => {
+		EventHandler.create(gridMovement, EEventType.MOVE_DOWN, (event: AEvent) => {
+			console.log(event)
+		})
+		EventHandler.create(gridMovement, EEventType.MOVE_LEFT, (event: AEvent) => {
+			console.log(event)
+		})
+		EventHandler.create(gridMovement, EEventType.MOVE_RIGHT, (event: AEvent) => {
 			console.log(event)
 		})
 		this.layer1.current!.addNode(grid)

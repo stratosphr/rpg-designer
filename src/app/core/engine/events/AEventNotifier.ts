@@ -1,14 +1,16 @@
 import {IEventListener} from './IEventListener'
-import {ITriggerableEvent} from './ITriggerableEvent'
+import AEvent from './AEvent'
+import {EEventCategory} from './EEventCategory'
+import {EEventType} from './EEventType'
 
 export default abstract class AEventNotifier {
 
-	public readonly category: string
-	public readonly triggerableEvents: ITriggerableEvent[]
+	public readonly name: EEventCategory
+	public readonly triggerableEvents: EEventType[]
 	public readonly listeners: IEventListener[]
 
-	protected constructor(category: string, triggerableEvents: ITriggerableEvent[]) {
-		this.category = category
+	protected constructor(name: EEventCategory, triggerableEvents: EEventType[]) {
+		this.name = name
 		this.triggerableEvents = triggerableEvents
 		this.listeners = []
 	}
@@ -17,14 +19,12 @@ export default abstract class AEventNotifier {
 		this.listeners.push(listener)
 	}
 
-	protected notifyListeners(eventName: string): void {
+	protected notifyListeners(event: AEvent): void {
 		this.listeners.forEach(listener => {
-			if (listener.category === this.category && listener.eventName === eventName) {
-				listener.handler(eventName)
+			if (listener.eventType === event.name) {
+				listener.handler(event)
 			}
 		})
 	}
 
 }
-
-

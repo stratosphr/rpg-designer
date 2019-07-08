@@ -4,17 +4,14 @@ import {IDrawable} from './IDrawable'
 import Layer from '../Layer'
 import {ABehaviour} from '../../engine/behaviors/ABehaviour'
 import {IVector} from '../../../utils/IVector'
-import AEventNotifier from '../../engine/events/AEventNotifier'
-import {ITriggerableEvent} from '../../engine/events/ITriggerableEvent'
 
-export abstract class ANode extends AEventNotifier implements IIdentifiable, IDrawable, IUpdatable {
+export abstract class ANode implements IIdentifiable, IDrawable, IUpdatable {
 
 	public readonly id: string
 	public position: IVector
 	private readonly behaviours: ABehaviour[]
 
-	constructor(id: string, position: IVector, triggerableEvents: ITriggerableEvent[] = []) {
-		super(id, triggerableEvents)
+	constructor(id: string, position: IVector) {
 		this.id = id
 		this.position = position
 		this.behaviours = []

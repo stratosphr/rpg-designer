@@ -3,11 +3,12 @@ import {EKey} from '../../../utils/EKey'
 import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
 import AMovement from './AMovement'
+import {EEventCategory} from '../events/EEventCategory'
 
 export default class FourWayMovement extends AMovement {
 
 	constructor(speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
-		super('FourWayMovement', [], speed, keys)
+		super(EEventCategory.FOUR_WAY_MOVEMENT, [], speed, keys)
 	}
 
 	public applyToNode(node: ANode, layer: Layer): void {
@@ -20,10 +21,6 @@ export default class FourWayMovement extends AMovement {
 		} else if (this.keysDown.down) {
 			this.moveDown(node)
 		}
-	}
-
-	protected getTriggerableEvents(): { category: string; triggerableEvents: string[] }[] {
-		return super.getTriggerableEvents()
 	}
 
 }

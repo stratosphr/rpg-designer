@@ -5,6 +5,7 @@ import Layer from '../../scene/Layer'
 import {IVector} from '../../../utils/IVector'
 import {EKey} from '../../../utils/EKey'
 import AMovement from './AMovement'
+import {EEventCategory} from '../events/EEventCategory'
 
 export class GridMovement extends AMovement {
 
@@ -13,7 +14,7 @@ export class GridMovement extends AMovement {
 	private grid: IGrid
 
 	constructor(speed: number, grid: IGrid, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
-		super('GridMovement', [], speed, keys)
+		super(EEventCategory.GRID_MOVEMENT, [], speed, keys)
 		this.dir = {x: 0, y: 0}
 		this.grid = grid
 		this.offset = null

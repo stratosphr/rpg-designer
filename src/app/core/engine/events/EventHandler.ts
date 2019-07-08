@@ -1,11 +1,12 @@
 import AEventNotifier from './AEventNotifier'
+import {EEventType} from './EEventType'
+import AEvent from './AEvent'
 
 export default class EventHandler {
 
-	public static create(source: AEventNotifier, category: string, eventName: string, handler: (event: string) => void) {
+	public static create(source: AEventNotifier, eventName: EEventType, handler: (event: AEvent) => void) {
 		source.addListener({
-			category: category,
-			eventName: eventName,
+			eventType: eventName,
 			handler: handler
 		})
 	}
