@@ -54,24 +54,24 @@ export default abstract class AMovement extends ABehaviour {
 		}
 	}
 
-	protected moveLeft(node: ANode) {
+	protected moveLeft(node: ANode, x: number = node.position.x - this.speed) {
 		this.notifyListeners({name: EEventType.MOVE_LEFT})
-		node.setPosition({x: node.position.x - this.speed, y: node.position.y})
+		node.setPosition({x: x, y: node.position.y})
 	}
 
-	protected moveRight(node: ANode) {
+	protected moveRight(node: ANode, x: number = node.position.x + this.speed) {
 		this.notifyListeners({name: EEventType.MOVE_RIGHT})
-		node.setPosition({x: node.position.x + this.speed, y: node.position.y})
+		node.setPosition({x: x, y: node.position.y})
 	}
 
-	protected moveUp(node: ANode) {
+	protected moveUp(node: ANode, y: number = node.position.y - this.speed) {
 		this.notifyListeners({name: EEventType.MOVE_UP})
-		node.setPosition({x: node.position.x, y: node.position.y - this.speed})
+		node.setPosition({x: node.position.x, y: y})
 	}
 
-	protected moveDown(node: ANode) {
+	protected moveDown(node: ANode, y: number = node.position.y + this.speed) {
 		this.notifyListeners({name: EEventType.MOVE_DOWN})
-		node.setPosition({x: node.position.x, y: node.position.y + this.speed})
+		node.setPosition({x: node.position.x, y: y})
 	}
 
 }
