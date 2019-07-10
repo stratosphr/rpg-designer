@@ -4,6 +4,7 @@ import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
 import AMovement from './AMovement'
 import {EEventCategory} from '../events/EEventCategory'
+import Direction from '../../../utils/Direction'
 
 export default class FourWayMovement extends AMovement {
 
@@ -13,13 +14,13 @@ export default class FourWayMovement extends AMovement {
 
 	public applyToNode(node: ANode, layer: Layer): void {
 		if (this.keysDown.left) {
-			this.moveLeft(node)
+			this.move(node, Direction.LEFT)
 		} else if (this.keysDown.right) {
-			this.moveRight(node)
+			this.move(node, Direction.RIGHT)
 		} else if (this.keysDown.up) {
-			this.moveUp(node)
+			this.move(node, Direction.UP)
 		} else if (this.keysDown.down) {
-			this.moveDown(node)
+			this.move(node, Direction.DOWN)
 		}
 	}
 

@@ -2,20 +2,18 @@ import IKeyedMovement from './IKeyedMovement'
 import {IGrid} from '../../../utils/IGrid'
 import {ANode} from '../../scene/nodes/ANode'
 import Layer from '../../scene/Layer'
-import {IVector} from '../../../utils/IVector'
 import {EKey} from '../../../utils/EKey'
 import AMovement from './AMovement'
 import {EEventCategory} from '../events/EEventCategory'
+import Direction from '../../../utils/Direction'
 
 export class GridMovement extends AMovement {
 
-	private dir: IVector
 	private offset: { x: number; y: number } | null
 	private grid: IGrid
 
 	constructor(speed: number, grid: IGrid, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
 		super(EEventCategory.GRID_MOVEMENT, [], speed, keys)
-		this.dir = {x: 0, y: 0}
 		this.grid = grid
 		this.offset = null
 	}
@@ -24,49 +22,41 @@ export class GridMovement extends AMovement {
 		if (this.offset === null) {
 			this.offset = {x: node.position.x % this.grid.cellsDimensions.w, y: node.position.y % this.grid.cellsDimensions.h}
 		}
-		if (this.keysDown.left && this.dir.y === 0) {
-			this.moveLeft(node)
-			this.dir = {x: -1, y: this.dir.y}
-		} else if (this.keysDown.right && this.dir.y === 0) {
-			this.moveRight(node)
-			this.dir = {x: 1, y: this.dir.y}
-		} else if (this.dir.x === -1) {
+		if (this.keysDown.left && this.direction.y === 0) {
+			this.move(node, Direction.LEFT)
+		} else if (this.keysDown.right && this.direction.y === 0) {
+			this.move(node, Direction.RIGHT)
+		} else if (this.direction.x === -1) {
 			let limitX: number = Math.floor((node.position.x - this.offset.x) / this.grid.cellsDimensions.w) * this.grid.cellsDimensions.w + this.offset.x
 			if (node.position.x - this.speed < limitX) {
-				this.moveLeft(node, limitX)
-				this.dir = {x: 0, y: this.dir.y}
+				this.move(node, {x: 0, y: this.direction.y}, {x: limitX, y: node.position.y})
 			} else {
-				this.moveLeft(node)
+				this.move(node)
 			}
-		} else if (this.dir.x === 1) {
+		} else if (this.direction.x === 1) {
 			let limitX: number = Math.ceil((node.position.x - this.offset.x) / this.grid.cellsDimensions.w) * this.grid.cellsDimensions.w + this.offset.x
 			if (node.position.x + this.speed > limitX) {
-				this.moveRight(node, limitX)
-				this.dir = {x: 0, y: this.dir.y}
+				this.move(node, {x: 0, y: this.direction.y}, {x: limitX, y: node.position.y})
 			} else {
-				this.moveRight(node)
+				this.move(node)
 			}
-		} else if (this.keysDown.up && this.dir.x === 0) {
-			this.moveUp(node)
-			this.dir = {x: this.dir.x, y: -1}
-		} else if (this.keysDown.down) {
-			this.moveDown(node)
-			this.dir = {x: this.dir.x, y: 1}
-		} else if (this.dir.y === -1) {
+		} else if (this.keysDown.up && this.direction.x === 0) {
+			this.move(node, Direction.UP)
+		} else if (this.keysDown.down && this.direction.x === 0) {
+			this.move(node, Direction.DOWN)
+		} else if (this.direction.y === -1) {
 			let limitY: number = Math.floor((node.position.y - this.offset.y) / this.grid.cellsDimensions.h) * this.grid.cellsDimensions.h + this.offset.y
 			if (node.position.y - this.speed < limitY) {
-				this.moveUp(node, limitY)
-				this.dir = {x: this.dir.x, y: 0}
+				this.move(node, {x: this.direction.x, y: 0}, {x: node.position.x, y: limitY})
 			} else {
-				this.moveUp(node)
+				this.move(node)
 			}
-		} else if (this.dir.y === 1 && this.dir.x === 0) {
+		} else if (this.direction.y === 1) {
 			let limitY: number = Math.ceil((node.position.y - this.offset.y) / this.grid.cellsDimensions.h) * this.grid.cellsDimensions.h + this.offset.y
 			if (node.position.y + this.speed > limitY) {
-				this.moveDown(node, limitY)
-				this.dir = {x: this.dir.x, y: 0}
+				this.move(node, {x: this.direction.x, y: 0}, {x: node.position.x, y: limitY})
 			} else {
-				this.moveDown(node)
+				this.move(node)
 			}
 		}
 	}
