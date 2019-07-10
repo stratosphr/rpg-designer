@@ -47,35 +47,15 @@ export default abstract class AMovement extends ABehaviour {
 
 	public applyToNode(node: ANode, layer: Layer): void {
 		if (this.keysDown.left) {
-			this.moveLeft(node)
+			this.move(node, Direction.LEFT)
 		} else if (this.keysDown.right) {
-			this.moveRight(node)
+			this.move(node, Direction.RIGHT)
 		}
 		if (this.keysDown.up) {
-			this.moveUp(node)
+			this.move(node, Direction.UP)
 		} else if (this.keysDown.down) {
-			this.moveDown(node)
+			this.move(node, Direction.DOWN)
 		}
-	}
-
-	protected moveLeft(node: ANode, x: number = node.position.x - this.speed) {
-		this.move(node, Direction.LEFT, {x: x, y: node.position.y})
-		this.notifyListeners({name: EEventType.MOVE_LEFT})
-	}
-
-	protected moveRight(node: ANode, x: number = node.position.x + this.speed) {
-		this.move(node, Direction.RIGHT, {x: x, y: node.position.y})
-		this.notifyListeners({name: EEventType.MOVE_RIGHT})
-	}
-
-	protected moveUp(node: ANode, y: number = node.position.y - this.speed) {
-		this.move(node, Direction.UP, {x: node.position.x, y: y})
-		this.notifyListeners({name: EEventType.MOVE_UP})
-	}
-
-	protected moveDown(node: ANode, y: number = node.position.y + this.speed) {
-		this.move(node, Direction.DOWN, {x: node.position.x, y: y})
-		this.notifyListeners({name: EEventType.MOVE_DOWN})
 	}
 
 	protected move(node: ANode, direction: Direction = this.direction, position: IVector = {x: node.position.x + direction.x * this.speed, y: node.position.y + direction.y * this.speed}) {

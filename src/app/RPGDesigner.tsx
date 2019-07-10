@@ -41,10 +41,11 @@ export default class RPGDesigner extends Component {
 		const sprite2: Sprite = new Sprite('sprite2', {x: 192, y: 128}, spriteSheet, [animation1, animation2, animation3, animation4])
 		const grid: Grid = new Grid('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 64, h: 64})
 		let gridMovement = new GridMovement(0.23, grid, defaultKeys)
+		let heightWayMovement = new HeightWayMovement(0.23, defaultKeys)
 		sprite1.addBehaviour(gridMovement)
-		sprite2.addBehaviour(new HeightWayMovement(0.23, defaultKeys))
-		EventHandler.create(gridMovement, EEventType.MOVE, (event: AEvent) => {
-			console.log(sprite1.position)
+		sprite2.addBehaviour(heightWayMovement)
+		EventHandler.create(heightWayMovement, EEventType.MOVE, (event: AEvent) => {
+			console.log(event)
 		})
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(sprite1)
