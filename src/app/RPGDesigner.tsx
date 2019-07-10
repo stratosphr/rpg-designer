@@ -13,8 +13,8 @@ import {IBoundaries} from './utils/IBoundaries'
 import skeleton from '../resources/skeleton_spritesheet.png'
 import EventHandler from './core/engine/events/EventHandler'
 import {EEventType} from './core/engine/events/EEventType'
-import AEvent from './core/engine/events/AEvent'
 import HeightWayMovement from './core/engine/behaviors/HeightWayMovement'
+import MoveEvent from './core/engine/events/events/MoveEvent'
 
 export default class RPGDesigner extends Component {
 
@@ -40,12 +40,13 @@ export default class RPGDesigner extends Component {
 		const sprite1: Sprite = new Sprite('sprite1', {x: 128, y: 128}, spriteSheet, [animation1, animation2, animation3, animation4])
 		const sprite2: Sprite = new Sprite('sprite2', {x: 192, y: 128}, spriteSheet, [animation1, animation2, animation3, animation4])
 		const grid: Grid = new Grid('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 64, h: 64})
-		let gridMovement = new GridMovement(0.23, grid, defaultKeys)
+		let gridMovement = new GridMovement(0.43, grid, defaultKeys)
 		let heightWayMovement = new HeightWayMovement(0.23, defaultKeys)
 		sprite1.addBehaviour(gridMovement)
 		sprite2.addBehaviour(heightWayMovement)
-		EventHandler.create(heightWayMovement, EEventType.MOVE, (event: AEvent) => {
-			console.log(event)
+		EventHandler.create(gridMovement, EEventType.MOVE, (event: MoveEvent) => {
+			console.log(event.status.before.position)
+			console.log(event.status.after.position)
 		})
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(sprite1)

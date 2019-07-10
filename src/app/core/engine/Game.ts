@@ -19,7 +19,7 @@ export default class Game {
 			}
 		}
 		scene.drawLayers()
-		window.requestAnimationFrame((timestamp) => Game.loop(scene, timeStep, timestamp, delta, lastFrameTimeMs))
+		window.requestAnimationFrame((timestamp) => this.loop(scene, timeStep, timestamp, delta, lastFrameTimeMs))
 	}
 
 	private static panic(timeStep: number) {

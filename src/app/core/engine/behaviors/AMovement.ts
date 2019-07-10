@@ -7,6 +7,7 @@ import {EEventType} from '../events/EEventType'
 import {EEventCategory} from '../events/EEventCategory'
 import {IVector} from '../../../utils/IVector'
 import Direction from '../../../utils/Direction'
+import MoveEvent from '../events/events/MoveEvent'
 
 export default abstract class AMovement extends ABehaviour {
 
@@ -59,9 +60,9 @@ export default abstract class AMovement extends ABehaviour {
 	}
 
 	protected move(node: ANode, direction: Direction = this.direction, position: IVector = {x: node.position.x + direction.x * this.speed, y: node.position.y + direction.y * this.speed}) {
+		this.notifyListeners(new MoveEvent({before: {direction: this.direction, position: node.position}, after: {direction: direction, position: position}}))
 		node.setPosition(position)
 		this.direction = direction
-		this.notifyListeners({name: EEventType.MOVE})
 	}
 
 }
