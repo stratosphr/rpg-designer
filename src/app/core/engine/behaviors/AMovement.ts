@@ -7,7 +7,8 @@ import {EEventType} from '../events/EEventType'
 import {EEventCategory} from '../events/EEventCategory'
 import {IVector} from '../../../utils/IVector'
 import Direction from '../../../utils/Direction'
-import MoveEvent from '../events/events/MoveEvent'
+import WillMoveEvent from '../events/events/WillMoveEvent'
+import DidMoveEvent from '../events/events/DidMoveEvent'
 
 export default abstract class AMovement extends ABehaviour {
 
@@ -17,7 +18,7 @@ export default abstract class AMovement extends ABehaviour {
 	protected direction: Direction
 
 	protected constructor(name: EEventCategory, triggerableEvents: EEventType[] = [], speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
-		super(name, [EEventType.MOVE, EEventType.MOVE_UP, EEventType.MOVE_DOWN, EEventType.MOVE_LEFT, EEventType.MOVE_RIGHT, ...triggerableEvents])
+		super(name, [EEventType.WILL_MOVE, EEventType.DID_MOVE, ...triggerableEvents])
 		this.speed = speed
 		this.keys = keys
 		this.keysDown = {up: false, down: false, left: false, right: false}
@@ -60,9 +61,14 @@ export default abstract class AMovement extends ABehaviour {
 	}
 
 	protected move(node: ANode, direction: Direction = this.direction, position: IVector = {x: node.position.x + direction.x * this.speed, y: node.position.y + direction.y * this.speed}) {
-		this.notifyListeners(new MoveEvent({before: {direction: this.direction, position: node.position}, after: {direction: direction, position: position}}))
-		node.setPosition(position)
-		this.direction = direction
+		if (this.isEnabled()) {
+			this.notifyListeners(new WillMoveEvent({before: {direction: this.direction, position: node.position}, after: {direction: direction, position: position}}))
+			if (this.isEnabled()) {
+				node.setPosition(position)
+				this.direction = direction
+				this.notifyListeners(new DidMoveEvent({before: {direction: this.direction, position: node.position}, after: {direction: direction, position: position}}))
+			}
+		}
 	}
 
 }

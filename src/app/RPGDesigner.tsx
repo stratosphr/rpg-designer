@@ -14,7 +14,7 @@ import skeleton from '../resources/skeleton_spritesheet.png'
 import EventHandler from './core/engine/events/EventHandler'
 import {EEventType} from './core/engine/events/EEventType'
 import HeightWayMovement from './core/engine/behaviors/HeightWayMovement'
-import MoveEvent from './core/engine/events/events/MoveEvent'
+import WillMoveEvent from './core/engine/events/events/WillMoveEvent'
 
 export default class RPGDesigner extends Component {
 
@@ -44,9 +44,10 @@ export default class RPGDesigner extends Component {
 		let heightWayMovement = new HeightWayMovement(0.23, defaultKeys)
 		sprite1.addBehaviour(gridMovement)
 		sprite2.addBehaviour(heightWayMovement)
-		EventHandler.create(gridMovement, EEventType.MOVE, (event: MoveEvent) => {
+		EventHandler.create(gridMovement, EEventType.WILL_MOVE, (event: WillMoveEvent) => {
 			console.log(event.status.before.position)
 			console.log(event.status.after.position)
+			gridMovement.disable()
 		})
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(sprite1)

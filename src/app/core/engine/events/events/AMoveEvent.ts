@@ -4,17 +4,17 @@ import {IEventState} from '../IEventState'
 import Direction from '../../../../utils/Direction'
 import {IVector} from '../../../../utils/IVector'
 
-interface IMoveEventState extends IEventState {
+export interface IMoveEventState extends IEventState {
 
 	before: { direction: Direction, position: IVector },
 	after: { direction: Direction, position: IVector }
 
 }
 
-export default class MoveEvent extends AEvent<IMoveEventState> {
+export default abstract class AMoveEvent extends AEvent<IMoveEventState> {
 
-	constructor(status: IMoveEventState) {
-		super(EEventType.MOVE, status)
+	protected constructor(type: EEventType = EEventType.WILL_MOVE, status: IMoveEventState) {
+		super(type, status)
 	}
 
 }
