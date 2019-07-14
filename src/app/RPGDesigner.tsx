@@ -13,8 +13,8 @@ import {IBoundaries} from './utils/IBoundaries'
 import skeleton from '../resources/skeleton_spritesheet.png'
 import EventHandler from './core/engine/events/EventHandler'
 import {EEventType} from './core/engine/events/EEventType'
-import HeightWayMovement from './core/engine/behaviors/HeightWayMovement'
 import WillMoveEvent from './core/engine/events/events/WillMoveEvent'
+import Direction from './utils/Direction'
 
 export default class RPGDesigner extends Component {
 
@@ -37,21 +37,33 @@ export default class RPGDesigner extends Component {
 		const animation2: SpriteAnimation = new SpriteAnimation('down', spriteSheet, animationDown, animationDown.length)
 		const animation3: SpriteAnimation = new SpriteAnimation('left', spriteSheet, animationLeft, animationLeft.length)
 		const animation4: SpriteAnimation = new SpriteAnimation('right', spriteSheet, animationRight, animationRight.length)
-		const sprite1: Sprite = new Sprite('sprite1', {x: 128, y: 128}, spriteSheet, [animation1, animation2, animation3, animation4])
-		const sprite2: Sprite = new Sprite('sprite2', {x: 192, y: 128}, spriteSheet, [animation1, animation2, animation3, animation4])
+		const sprite1: Sprite = new Sprite('sprite1', {x: 128, y: 128}, animation1)
 		const grid: Grid = new Grid('grid', {x: 0, y: 0}, {x: 28, y: 16}, {w: 64, h: 64})
 		let gridMovement = new GridMovement(0.43, grid, defaultKeys)
-		let heightWayMovement = new HeightWayMovement(0.23, defaultKeys)
 		sprite1.addBehaviour(gridMovement)
-		sprite2.addBehaviour(heightWayMovement)
 		EventHandler.create(gridMovement, EEventType.WILL_MOVE, (event: WillMoveEvent) => {
-			console.log(event.status.before.position)
-			console.log(event.status.after.position)
-			gridMovement.disable()
+			switch (event.status.after.direction) {
+				case Direction.UP:
+					sprite1.playAnimation(animation1)
+					break
+				case Direction.DOWN:
+					sprite1.playAnimation(animation2)
+					break
+				case Direction.LEFT:
+					sprite1.playAnimation(animation3)
+					break
+				case Direction.RIGHT:
+					sprite1.playAnimation(animation4)
+					break
+			}
+		})
+		EventHandler.create(gridMovement, EEventType.DID_MOVE, (event: WillMoveEvent) => {
+			if (event.status.after.direction === Direction.NONE) {
+				sprite1.stopAnimation()
+			}
 		})
 		this.layer1.current!.addNode(grid)
 		this.layer1.current!.addNode(sprite1)
-		this.layer1.current!.addNode(sprite2)
 		Game.run(scene, 200)
 	}
 

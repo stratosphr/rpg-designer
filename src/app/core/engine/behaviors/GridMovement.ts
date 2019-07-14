@@ -29,14 +29,14 @@ export class GridMovement extends AMovement {
 		} else if (this.direction.x === -1) {
 			let limitX: number = Math.floor((node.position.x - this.offset.x) / this.grid.cellsDimensions.w) * this.grid.cellsDimensions.w + this.offset.x
 			if (node.position.x - this.speed < limitX) {
-				this.move(node, {x: 0, y: this.direction.y}, {x: limitX, y: node.position.y})
+				this.move(node, Direction.NONE, {x: limitX, y: node.position.y})
 			} else {
 				this.move(node)
 			}
 		} else if (this.direction.x === 1) {
 			let limitX: number = Math.ceil((node.position.x - this.offset.x) / this.grid.cellsDimensions.w) * this.grid.cellsDimensions.w + this.offset.x
 			if (node.position.x + this.speed > limitX) {
-				this.move(node, {x: 0, y: this.direction.y}, {x: limitX, y: node.position.y})
+				this.move(node, Direction.NONE, {x: limitX, y: node.position.y})
 			} else {
 				this.move(node)
 			}
@@ -47,14 +47,14 @@ export class GridMovement extends AMovement {
 		} else if (this.direction.y === -1) {
 			let limitY: number = Math.floor((node.position.y - this.offset.y) / this.grid.cellsDimensions.h) * this.grid.cellsDimensions.h + this.offset.y
 			if (node.position.y - this.speed < limitY) {
-				this.move(node, {x: this.direction.x, y: 0}, {x: node.position.x, y: limitY})
+				this.move(node, Direction.NONE, {x: node.position.x, y: limitY})
 			} else {
 				this.move(node)
 			}
 		} else if (this.direction.y === 1) {
 			let limitY: number = Math.ceil((node.position.y - this.offset.y) / this.grid.cellsDimensions.h) * this.grid.cellsDimensions.h + this.offset.y
 			if (node.position.y + this.speed > limitY) {
-				this.move(node, {x: this.direction.x, y: 0}, {x: node.position.x, y: limitY})
+				this.move(node, Direction.NONE, {x: node.position.x, y: limitY})
 			} else {
 				this.move(node)
 			}
