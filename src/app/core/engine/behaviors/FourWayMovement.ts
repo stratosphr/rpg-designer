@@ -8,7 +8,7 @@ import Direction from '../../../utils/Direction'
 
 export default class FourWayMovement extends AMovement {
 
-	constructor(speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
+	constructor(speed: number, keys: IKeyedMovement = {up: EKey.ARROWUP, down: EKey.ARROWDOWN, left: EKey.ARROWLEFT, right: EKey.ARROWRIGHT}) {
 		super(EEventCategory.FOUR_WAY_MOVEMENT, [], speed, keys)
 	}
 

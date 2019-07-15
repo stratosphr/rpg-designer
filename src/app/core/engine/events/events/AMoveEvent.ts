@@ -13,7 +13,7 @@ export interface IMoveEventState extends IEventState {
 
 export default abstract class AMoveEvent extends AEvent<IMoveEventState> {
 
-	protected constructor(type: EEventType = EEventType.WILL_MOVE, status: IMoveEventState) {
+	protected constructor(type: EEventType, status: IMoveEventState) {
 		super(type, status)
 	}
 

@@ -12,7 +12,7 @@ export class GridMovement extends AMovement {
 	private offset: { x: number; y: number } | null
 	private grid: IGrid
 
-	constructor(speed: number, grid: IGrid, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
+	constructor(speed: number, grid: IGrid, keys: IKeyedMovement = {up: EKey.ARROWUP, down: EKey.ARROWDOWN, left: EKey.ARROWLEFT, right: EKey.ARROWRIGHT}) {
 		super(EEventCategory.GRID_MOVEMENT, [], speed, keys)
 		this.grid = grid
 		this.offset = null

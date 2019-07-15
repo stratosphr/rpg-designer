@@ -5,7 +5,7 @@ import {EEventCategory} from '../events/EEventCategory'
 
 export default class HeightWayMovement extends AMovement {
 
-	constructor(speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
+	constructor(speed: number, keys: IKeyedMovement = {up: EKey.ARROWUP, down: EKey.ARROWDOWN, left: EKey.ARROWLEFT, right: EKey.ARROWRIGHT}) {
 		super(EEventCategory.HEIGHT_WAY_MOVEMENT, [], speed, keys)
 	}
 

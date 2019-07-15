@@ -1,10 +1,10 @@
 export enum EKey {
 
 	NONE = '',
-	UP = 'arrowup',
-	DOWN = 'arrowdown',
-	LEFT = 'arrowleft',
-	RIGHT = 'arrowright',
+	ARROWUP = 'ARROWUP',
+	ARROWDOWN = 'ARROWDOWN',
+	ARROWLEFT = 'ARROWLEFT',
+	ARROWRIGHT = 'ARROWRIGHT',
 	D = 'd',
 	I = 'i',
 	J = 'j',
@@ -12,6 +12,6 @@ export enum EKey {
 	L = 'l',
 	Q = 'q',
 	S = 's',
-	Z = 'z'
+	Z = 'z',
 
 }

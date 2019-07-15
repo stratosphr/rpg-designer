@@ -17,7 +17,7 @@ export default abstract class AMovement extends ABehaviour {
 	protected readonly keysDown: { up: boolean, down: boolean, left: boolean, right: boolean }
 	protected direction: Direction
 
-	protected constructor(name: EEventCategory, triggerableEvents: EEventType[] = [], speed: number, keys: IKeyedMovement = {up: EKey.UP, down: EKey.DOWN, left: EKey.LEFT, right: EKey.RIGHT}) {
+	protected constructor(name: EEventCategory, triggerableEvents: EEventType[] = [], speed: number, keys: IKeyedMovement = {up: EKey.ARROWUP, down: EKey.ARROWDOWN, left: EKey.ARROWLEFT, right: EKey.ARROWRIGHT}) {
 		super(name, [EEventType.WILL_MOVE, EEventType.DID_MOVE, ...triggerableEvents])
 		this.speed = speed
 		this.keys = keys
@@ -29,7 +29,7 @@ export default abstract class AMovement extends ABehaviour {
 	}
 
 	private handleKey(ev: KeyboardEvent, isDown: boolean) {
-		switch (ev.key.toLowerCase()) {
+		switch (ev.key.toUpperCase()) {
 			case this.keys.up:
 				this.keysDown.up = isDown
 				break
